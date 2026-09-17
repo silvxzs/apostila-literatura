@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literatura: Parnasianismo, Simbolismo e Pré-modernismo</title>
+<style>
+:root{
+  --bg:#0c0b0f;
+  --bg2:#131118;
+  --ink:#ece7dd;
+  --ink-soft:#a9a294;
+  --line:rgba(236,231,221,.14);
+  --parn:#d4af37;
+  --simb:#8fbfe0;
+  --prem:#d97a52;
+  --ok:#7fc99a;
+  --serif:Georgia,"Times New Roman",Times,serif;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(212,175,55,.07), transparent 60%),
+    radial-gradient(900px 500px at 10% 30%, rgba(143,191,224,.06), transparent 60%),
+    radial-gradient(900px 500px at 90% 75%, rgba(217,122,82,.06), transparent 60%),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:19px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- barra de progresso ---------- */
+#progress{
+  position:fixed;top:0;left:0;height:4px;width:0%;
+  background:linear-gradient(90deg,var(--parn),var(--simb),var(--prem));
+  z-index:999;transition:width .1s linear;
+  box-shadow:0 0 14px rgba(212,175,55,.5);
+}
+#chip{
+  position:fixed;top:14px;right:14px;z-index:999;
+  font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);background:rgba(12,11,15,.82);
+  border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+  backdrop-filter:blur(8px);opacity:0;transition:opacity .4s;
+}
+#chip.on{opacity:1}
+
+/* ---------- layout ---------- */
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+section{padding:56px 0}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.rev.in{opacity:1;transform:none}
+
+/* ---------- capa ---------- */
+header.hero{
+  min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+  padding:60px 0 40px;border-bottom:1px solid var(--line);
+}
+.kicker{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:26px}
+h1{font-size:clamp(38px,8.5vw,74px);line-height:1.04;margin:0 0 12px;font-weight:400;letter-spacing:-.02em}
+h1 .g{background:linear-gradient(90deg,var(--parn),var(--simb) 55%,var(--prem));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(19px,4vw,25px);color:var(--ink-soft);max-width:36ch;margin:18px 0 0;line-height:1.5}
+.hero-note{margin-top:44px;font-family:var(--sans);font-size:15px;color:var(--ink-soft);border-left:2px solid var(--parn);padding-left:16px;max-width:52ch;line-height:1.65}
+.scroll-hint{margin-top:54px;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(7px);opacity:1}}
+
+/* ---------- títulos ---------- */
+h2{font-size:clamp(30px,6vw,46px);line-height:1.12;margin:0 0 8px;font-weight:400;letter-spacing:-.015em}
+h3{font-size:clamp(22px,4.4vw,30px);line-height:1.25;margin:52px 0 14px;font-weight:400}
+h4{font-family:var(--sans);font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin:38px 0 10px;font-weight:600}
+p{margin:0 0 20px}
+.lead{font-size:clamp(20px,4.2vw,24px);color:#d9d3c7;line-height:1.6}
+strong{color:#fff;font-weight:600}
+em{color:#f0e9dc}
+
+/* ---------- marcador de escola ---------- */
+.tag{display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:5px 13px;border-radius:999px;margin-bottom:20px}
+.t-parn{color:var(--parn);border:1px solid rgba(212,175,55,.45);background:rgba(212,175,55,.08)}
+.t-simb{color:var(--simb);border:1px solid rgba(143,191,224,.45);background:rgba(143,191,224,.08)}
+.t-prem{color:var(--prem);border:1px solid rgba(217,122,82,.45);background:rgba(217,122,82,.08)}
+.parn h2,.parn h3{color:var(--parn)}
+.simb h2,.simb h3{color:var(--simb)}
+.prem h2,.prem h3{color:var(--prem)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0}
+
+/* ---------- caixas ---------- */
+.box{border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin:30px 0;background:rgba(255,255,255,.022)}
+.box h5{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px;color:var(--ink-soft);font-weight:600}
+.box p:last-child{margin-bottom:0}
+.alert{border-left:3px solid var(--prem);background:rgba(217,122,82,.07)}
+.alert h5{color:var(--prem)}
+.key{border-left:3px solid var(--parn);background:rgba(212,175,55,.06)}
+.key h5{color:var(--parn)}
+.cool{border-left:3px solid var(--simb);background:rgba(143,191,224,.06)}
+.cool h5{color:var(--simb)}
+
+/* ---------- linha do tempo ---------- */
+.tl{margin:40px 0 10px;font-family:var(--sans)}
+.tl-track{position:relative;height:196px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0 0}
+.bar{position:absolute;height:30px;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;color:#0c0b0f;font-weight:700;transform-origin:left center;transform:scaleX(0);animation:none}
+.tl.in .bar{animation:grow .9s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes grow{to{transform:scaleX(1)}}
+.b1{top:6px;background:rgba(236,231,221,.28);color:var(--ink);animation-delay:.05s}
+.b2{top:42px;background:rgba(236,231,221,.4);color:#0c0b0f;animation-delay:.2s}
+.b3{top:78px;background:var(--parn);animation-delay:.35s}
+.b4{top:114px;background:var(--simb);animation-delay:.5s}
+.b5{top:150px;background:var(--prem);animation-delay:.65s}
+.tl-years{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);margin-top:8px;letter-spacing:.1em}
+.tl-cap{font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:1.6;margin-top:18px}
+
+/* ---------- poema ---------- */
+.poem{
+  position:relative;margin:34px 0;padding:30px 28px 26px;border-radius:16px;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  border:1px solid var(--line);
+}
+.poem::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:3px;background:var(--ink-soft);opacity:.5}
+.parn .poem::before{background:var(--parn)}
+.simb .poem::before{background:var(--simb)}
+.prem .poem::before{background:var(--prem)}
+.poem .ptitle{font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:18px}
+.poem .verses{font-size:clamp(18px,3.9vw,21px);line-height:1.95;white-space:pre-line;color:#f3eee3;font-style:italic}
+.poem .src{font-family:var(--sans);font-style:normal;font-size:13px;color:var(--ink-soft);margin-top:18px;letter-spacing:.04em}
+
+/* ---------- comentario verso a verso ---------- */
+.gloss{margin:26px 0 10px;border-top:1px dashed var(--line);padding-top:20px}
+.gloss .gl{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 0;border-bottom:1px solid rgba(236,231,221,.07)}
+.gloss .gl:last-child{border-bottom:0}
+.gloss .v{font-style:italic;color:#f3eee3;font-size:17px;line-height:1.6}
+.gloss .g{font-family:var(--sans);font-size:15.5px;color:var(--ink-soft);line-height:1.65}
+.gloss .g b{color:#e9e3d6;font-weight:600}
+
+/* ---------- listas ---------- */
+ul.chars{list-style:none;padding:0;margin:26px 0}
+ul.chars li{position:relative;padding:16px 0 16px 42px;border-bottom:1px solid rgba(236,231,221,.08)}
+ul.chars li:last-child{border-bottom:0}
+ul.chars li .n{position:absolute;left:0;top:16px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:13px;font-weight:700;color:#0c0b0f;background:var(--ink-soft)}
+.parn ul.chars li .n{background:var(--parn)}
+.simb ul.chars li .n{background:var(--simb)}
+.prem ul.chars li .n{background:var(--prem)}
+ul.chars li b{display:block;color:#fff;font-weight:600;margin-bottom:3px}
+ul.plain{padding-left:22px;margin:20px 0}
+ul.plain li{margin-bottom:12px}
+ul.plain li::marker{color:var(--ink-soft)}
+
+/* ---------- autor ---------- */
+.author{border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:22px 0;background:rgba(255,255,255,.022)}
+.author .an{font-size:22px;color:#fff;margin-bottom:2px}
+.author .ad{font-family:var(--sans);font-size:13px;color:var(--ink-soft);letter-spacing:.06em;margin-bottom:14px}
+.author p{margin-bottom:12px;font-size:18px}
+.author p:last-child{margin-bottom:0}
+.works{font-family:var(--sans);font-size:14.5px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.works b{color:#e9e3d6}
+
+/* ---------- tabela ---------- */
+.tablewrap{overflow-x:auto;margin:32px 0;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-family:var(--sans);font-size:15px}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+thead th{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0c0b0f;font-weight:700}
+thead th:nth-child(1){background:rgba(236,231,221,.2);color:var(--ink)}
+thead th:nth-child(2){background:var(--parn)}
+thead th:nth-child(3){background:var(--simb)}
+thead th:nth-child(4){background:var(--prem)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{font-weight:600;color:var(--ink-soft);font-size:13px;letter-spacing:.06em;text-transform:uppercase;width:120px;background:rgba(255,255,255,.02)}
+td{color:#ddd6c8}
+
+/* ---------- radar de palavras ---------- */
+.radar{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:28px 0}
+.rcard{border:1px solid var(--line);border-radius:14px;padding:20px;background:rgba(255,255,255,.022)}
+.rcard h6{font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;font-weight:700}
+.rcard.p h6{color:var(--parn)}
+.rcard.s h6{color:var(--simb)}
+.rcard.m h6{color:var(--prem)}
+.words{display:flex;flex-wrap:wrap;gap:7px}
+.words span{font-family:var(--sans);font-size:13.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:#ddd6c8;background:rgba(255,255,255,.03)}
+.rcard.p .words span{border-color:rgba(212,175,55,.3)}
+.rcard.s .words span{border-color:rgba(143,191,224,.3)}
+.rcard.m .words span{border-color:rgba(217,122,82,.3)}
+
+/* ---------- fluxograma de decisao ---------- */
+.flow{margin:30px 0;font-family:var(--sans)}
+.step{border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:14px;background:rgba(255,255,255,.025);position:relative}
+.step .q{font-size:17px;color:#fff;margin-bottom:10px;font-weight:600}
+.step .a{font-size:15.5px;color:var(--ink-soft);line-height:1.65}
+.step .a b{color:#e9e3d6}
+.arrow{text-align:center;color:var(--ink-soft);font-size:20px;margin:-6px 0 8px;opacity:.5}
+
+/* ---------- exercicios ---------- */
+.ex{border:1px solid var(--line);border-radius:14px;margin:20px 0;overflow:hidden;background:rgba(255,255,255,.025)}
+.ex .head{padding:20px 24px 8px}
+.ex .num{font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px}
+.ex .frag{font-style:italic;font-size:18px;line-height:1.85;color:#f3eee3;white-space:pre-line;border-left:2px solid var(--line);padding-left:16px;margin:0 0 14px}
+.ex .ask{font-family:var(--sans);font-size:15.5px;color:#ddd6c8;padding:0 24px 18px;line-height:1.6}
+details{border-top:1px solid var(--line)}
+summary{
+  cursor:pointer;list-style:none;padding:15px 24px;font-family:var(--sans);
+  font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ok);
+  background:rgba(127,201,154,.06);transition:background .25s;user-select:none;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" +";font-weight:700}
+details[open] summary::after{content:" −"}
+summary:hover{background:rgba(127,201,154,.13)}
+details .ans{padding:18px 24px 22px;font-size:17px;line-height:1.75;color:#ddd6c8;animation:fade .45s ease}
+details .ans b{color:#fff}
+details .ans p{margin-bottom:14px}
+details .ans p:last-child{margin-bottom:0}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ---------- colinha ---------- */
+.cheat{border:1px solid var(--parn);border-radius:16px;padding:28px;background:linear-gradient(180deg,rgba(212,175,55,.09),rgba(212,175,55,.02));margin:34px 0}
+.cheat h4{color:var(--parn);margin-top:0}
+.cheat ul{padding-left:20px;margin:0}
+.cheat li{margin-bottom:12px;font-size:17.5px}
+.cheat li:last-child{margin-bottom:0}
+
+footer{padding:70px 0 90px;text-align:center;font-family:var(--sans);font-size:14px;color:var(--ink-soft);border-top:1px solid var(--line);line-height:1.8}
+
+@media(max-width:600px){
+  body{font-size:18px}
+  section{padding:44px 0}
+  .wrap{padding:0 18px}
+  .poem{padding:24px 20px}
+  .box{padding:20px}
+  .tl-track{height:196px}
+  .bar{font-size:11px;padding:0 7px}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="chip">Literatura</div>
+
+<div class="wrap">
+
+<!-- ================= CAPA ================= -->
+<header class="hero">
+  <div class="kicker">Prova de 14 a 20 de setembro de 2026</div>
+  <h1>Três escolas, <span class="g">uma briga só</span></h1>
+  <p class="sub">Parnasianismo, Simbolismo e Pré-modernismo, contados como briga de geração e não como lista de tópicos.</p>
+  <div class="hero-note">
+    Aqui nada é decorado solto. Primeiro o que estava acontecendo no Brasil e no mundo, depois contra quem cada escola estava brigando, depois as características com poema de verdade mostrando a coisa funcionando, e só no fim os autores. Escola decorada em lista evapora. Escola contada como briga fica.
+  </div>
+  <div class="scroll-hint">role para começar ↓</div>
+</header>
+
+<!-- ================= O MAPA ================= -->
+<section class="rev">
+  <h2>Antes de tudo: o mapa do tempo</h2>
+  <p class="lead">Se o senhor entender só uma coisa desta apostila, entenda esta imagem. Ela resolve sozinha metade das questões de prova.</p>
+
+  <div class="tl" id="tl">
+    <div class="tl-track">
+      <div class="bar b1" style="left:0%;width:19%">Romantismo (até 1881)</div>
+      <div class="bar b2" style="left:18.3%;width:35%">Realismo e Naturalismo (1881)</div>
+      <div class="bar b3" style="left:20%;width:66.7%">Parnasianismo (1882 a 1922)</div>
+      <div class="bar b4" style="left:38.3%;width:48.4%">Simbolismo (1893 a 1922)</div>
+      <div class="bar b5" style="left:53.3%;width:33.4%">Pré-modernismo (1902 a 1922)</div>
+    </div>
+    <div class="tl-years"><span>1870</span><span>1890</span><span>1910</span><span>1930</span></div>
+    <div class="tl-cap">Repare no que ninguém repara: as três barras coloridas <b>se sobrepõem</b>. Parnasianismo e Simbolismo conviveram por quase trinta anos, brigando entre si. E o Pré-modernismo aconteceu por cima dos dois, sem matar nenhum. Todos morrem juntos em 1922, quando a Semana de Arte Moderna passa o trator.</div>
+  </div>
+
+  <div class="box key">
+    <h5>As cinco datas que o senhor precisa saber de cor</h5>
+    <ul class="plain">
+      <li><b>1882</b>: sai <i>Fanfarras</i>, de Teófilo Dias. Começa o Parnasianismo no Brasil.</li>
+      <li><b>1893</b>: Cruz e Sousa lança <i>Missal</i> e <i>Broquéis</i>. Começa o Simbolismo no Brasil.</li>
+      <li><b>1902</b>: saem <i>Os sertões</i>, de Euclides da Cunha, e <i>Canaã</i>, de Graça Aranha. Começa o Pré-modernismo.</li>
+      <li><b>1922</b>: Semana de Arte Moderna. Acaba tudo isso de uma vez e começa o Modernismo.</li>
+      <li><b>1889</b>: Proclamação da República. É o pano de fundo político das três.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= O CLIMA DA ÉPOCA ================= -->
+<section class="rev">
+  <h2>O clima que gerou tudo</h2>
+  <p>Fim do século XIX. O mundo estava embriagado de ciência. A Segunda Revolução Industrial encheu as cidades de máquina, luz elétrica, trem e telefone. Um francês chamado <strong>Auguste Comte</strong> tinha criado o <strong>positivismo</strong> (a ideia de que só é verdade aquilo que se pode medir, testar e provar). Darwin tinha explicado o homem como bicho evoluído. A fé estava em baixa e o microscópio em alta.</p>
+
+  <p>Nesse clima, a geração nova olhou para o <strong>Romantismo</strong> (a escola anterior, do poeta que chora pela amada e morre de tuberculose por amor) e achou aquilo ridículo. Choro, exagero, "eu sofro, eu amo, eu morro". Verso feito de qualquer jeito, no impulso, sem acabamento. Para quem admirava a ciência, aquilo era falta de seriedade.</p>
+
+  <div class="box">
+    <h5>A analogia que resolve</h5>
+    <p>Imagine que o Romantismo era um cantor chorando no microfone, desafinado, mas cheio de sentimento. A geração seguinte se dividiu em dois grupos que odiavam o mesmo cantor <b>por motivos opostos</b>:</p>
+    <p>O <b style="color:var(--parn)">Parnasianismo</b> disse: o problema é que ele não estudou música. Vamos fazer o oposto, técnica perfeita, afinação impecável, e sem sentimento nenhum atrapalhando.</p>
+    <p>O <b style="color:var(--simb)">Simbolismo</b> disse: o problema é que ele chorava por coisa pequena, uma mulher que não quis ele. Vamos chorar por coisa grande, pela alma, por Deus, pelo mistério de existir. E sem explicar, só sugerindo.</p>
+    <p>Vinte anos depois, um terceiro grupo apareceu e disse: vocês dois estão discutindo poesia enquanto o país passa fome no sertão. Esse é o <b style="color:var(--prem)">Pré-modernismo</b>.</p>
+  </div>
+
+  <p class="lead">Guardada essa cena, o resto da matéria é detalhe. Agora vamos escola por escola.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= PARNASIANISMO ================= -->
+<section class="parn rev">
+  <div class="tag t-parn">Escola 1 de 3</div>
+  <h2>Parnasianismo</h2>
+  <p class="lead">A poesia virou joalheria. O poeta parou de sentir e passou a esculpir.</p>
+
+  <h3>De onde veio o nome</h3>
+  <p>Da França. Em 1866, um grupo de poetas franceses publicou uma antologia chamada <i>Le Parnasse Contemporain</i>. <strong>Parnaso</strong> é um monte da Grécia antiga onde, na mitologia, moravam as musas, as deusas que inspiravam artistas. O nome já entrega o programa: poesia clássica, grega, elevada, longe da rua.</p>
+  <p>No Brasil, a marca de início é <strong>1882</strong>, com o livro <i>Fanfarras</i>, de Teófilo Dias. Detalhe de prova: quem começa a escola não é o autor mais famoso dela. Teófilo Dias abre a porta, mas quem manda no Parnasianismo brasileiro é Olavo Bilac.</p>
+
+  <h3>O Brasil daquele momento</h3>
+  <p>É o Brasil do fim do Império e do começo da República. Abolição em 1888, República em 1889. O Rio de Janeiro vivia a <strong>Belle Époque</strong> (período em que a elite brasileira quis transformar a capital numa Paris tropical: café chique, ópera, moda francesa, avenida larga). O prefeito Pereira Passos derrubou cortiços inteiros para abrir avenidas, no episódio que ficou conhecido como "bota-abaixo".</p>
+  <p>Nesse cenário, o poeta parnasiano era um homem <strong>elegante e de prestígio</strong>. Poesia se recitava em salão, se decorava, se aplaudia. A Academia Brasileira de Letras foi fundada em 1897 e virou o clube deles. Olavo Bilac foi eleito, em 1907, <strong>Príncipe dos Poetas Brasileiros</strong>, por votação de revista. Isso explica muito: o Parnasianismo era o <strong>gosto oficial</strong>, a poesia da elite, a poesia bem vista.</p>
+
+  <div class="box key">
+    <h5>Contra o que o Parnasianismo estava reagindo</h5>
+    <p>Contra o <b>Romantismo</b>, ponto a ponto:</p>
+    <ul class="plain">
+      <li>Contra o sentimentalismo derramado. Poeta não deve aparecer chorando no poema.</li>
+      <li>Contra o "eu" no centro de tudo. O mundo é mais interessante que a sua tristeza.</li>
+      <li>Contra a musa idealizada e a mulher-anjo. Prefira descrever um vaso, que fica parado.</li>
+      <li>Contra o verso descuidado, feito no impulso da emoção. Poesia é ofício, é trabalho de mão.</li>
+      <li>Contra a poesia que serve para alguma coisa (patriotismo, religião, causa social). Poesia serve para ser bonita.</li>
+    </ul>
+  </div>
+
+  <h3>As sete características, e como reconhecer cada uma</h3>
+  <ul class="chars">
+    <li><span class="n">1</span><b>Arte pela arte</b>O poema não tem função nenhuma fora dele mesmo. Não ensina, não denuncia, não converte ninguém. Existe para ser belo, como uma joia existe para ser bonita.</li>
+    <li><span class="n">2</span><b>Culto à forma e perfeição formal</b>Métrica contada sílaba por sílaba (decassílabo, alexandrino), rima rica e difícil, estrofe regular. Nada é por acaso. O <b>soneto</b> (poema de 14 versos, dois quartetos e dois tercetos) é a forma preferida porque é a mais exigente.</li>
+    <li><span class="n">3</span><b>Objetividade e impessoalidade</b>O poeta descreve o mundo de fora, como quem fotografa. Ele some do poema. Se aparecer sentimento, aparece controlado, contido, nunca escancarado.</li>
+    <li><span class="n">4</span><b>Descritivismo, a poesia-escultura</b>A obsessão por objetos parados e trabalhados: vaso, taça, estátua, joia, leque, arma antiga. O poeta descreve o objeto em detalhe, como um escultor faz relevo. Se o senhor consegue <b>desenhar</b> o que o poema diz, provavelmente é parnasiano.</li>
+    <li><span class="n">5</span><b>Vocabulário culto e preciosismo</b>Palavra rara, exata, difícil, muitas vezes de origem grega ou latina. Não se escreve "brilha", escreve-se "fulgura". Não é enfeite: é demonstração de domínio técnico.</li>
+    <li><span class="n">6</span><b>Temas clássicos e universais</b>Mitologia grega e romana, Roma antiga, Oriente exótico, natureza descrita com distanciamento. Assunto de Brasil real quase não entra.</li>
+    <li><span class="n">7</span><b>Racionalismo</b>O poema é <b>construído</b>, não é <b>sentido</b>. O poeta trabalha o verso como um ourives trabalha o ouro: com lima, cinzel e paciência.</li>
+  </ul>
+
+  <h3>Poema 1: o manifesto da escola</h3>
+  <p>Se cair uma questão pedindo "qual poema resume o Parnasianismo", a resposta é esta. Olavo Bilac abriu o livro <i>Poesias</i> (1888) com um poema que é um programa de trabalho.</p>
+
+  <div class="poem">
+    <div class="ptitle">Profissão de fé (trechos)</div>
+    <div class="verses">Invejo o ourives quando escrevo:
+Imito o amor
+Com que ele, em ouro, o alto relevo
+Faz de uma flor.
+
+(...)
+
+Torce, aprimora, alteia, lima
+A frase; e, enfim,
+No verso de ouro engasta a rima,
+Como um rubim.
+
+(...)
+
+Assim procedo. Minha pena
+Segue esta norma,
+Por te servir, Deusa serena,
+Serena Forma!</div>
+    <div class="src">Olavo Bilac, em <i>Poesias</i>, 1888</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">"Invejo o ourives quando escrevo"</div>
+        <div class="g"><b>Ourives</b> é o artesão que trabalha ouro e faz joia. Bilac está dizendo, na primeira linha do livro, qual é a profissão dele: não é sentir, é <b>fabricar</b>. Isso sozinho já mata o Romantismo. Marca a característica 7 (racionalismo) e a 2 (culto à forma).</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Torce, aprimora, alteia, lima / A frase"</div>
+        <div class="g">Quatro verbos de <b>trabalho manual</b> empilhados. Torcer, melhorar, levantar, lixar. Não tem um verbo de emoção ali. A poesia é tratada como peça de metal na bancada. Perceba que "lima" é a ferramenta que tira o excesso: o parnasiano corta o que sobra.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"No verso de ouro engasta a rima, / Como um rubim"</div>
+        <div class="g"><b>Engastar</b> é encaixar a pedra no anel. A rima é tratada como pedra preciosa encaixada no metal do verso. Vocabulário de joalheria dentro do poema, característica 5 no estado puro.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Por te servir, Deusa serena, / Serena Forma!"</div>
+        <div class="g">A deusa dele não é a amada, não é a pátria, não é Deus. É a <b>Forma</b>, com F maiúsculo. O poeta se declara servo da técnica. É a definição de "arte pela arte" (característica 1) escrita em verso. Repare também na repetição de "serena": calma, frieza, controle. O oposto exato do choro romântico.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Poema 2: a armadilha mais comum da prova</h3>
+  <p>Este soneto engana muita gente porque o assunto parece romântico: amor, estrelas, noite. Mas a escola não se decide pelo assunto, se decide pelo <strong>tratamento</strong>.</p>
+
+  <div class="poem">
+    <div class="ptitle">Via Láctea, soneto XIII</div>
+    <div class="verses">"Ora (direis) ouvir estrelas! Certo
+Perdeste o senso!" E eu vos direi, no entanto,
+Que, para ouvi-las, muita vez desperto
+E abro as janelas, pálido de espanto...
+
+E conversamos toda a noite, enquanto
+A Via Láctea, como um pálio aberto,
+Cintila. E, ao vir do sol, saudoso e em pranto,
+Inda as procuro pelo céu deserto.
+
+Direis agora: "Tresloucado amigo!
+Que conversas com elas? Que sentido
+Tem o que dizem, quando estão contigo?"
+
+E eu vos direi: "Amai para entendê-las!
+Pois só quem ama pode ter ouvido
+Capaz de ouvir e de entender estrelas."</div>
+    <div class="src">Olavo Bilac, em <i>Poesias</i>, 1888</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">A forma inteira</div>
+        <div class="g">Soneto: 14 versos, dois quartetos e dois tercetos, todos em <b>decassílabo</b> (dez sílabas poéticas). Rima organizada, sem um deslize. Um romântico jamais teria essa disciplina, e um simbolista não teria interesse nela. <b>A forma perfeita é a assinatura parnasiana</b>, mesmo quando o tema é sentimental.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Ora (direis) ouvir estrelas! Certo / Perdeste o senso!"</div>
+        <div class="g">O poema começa com a <b>fala de outra pessoa</b> zombando do poeta. Isso é construção teatral, calculada, não é desabafo. Ele monta um diálogo para chegar a um final de efeito. Poema pensado, não poema vomitado.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"A Via Láctea, como um pálio aberto"</div>
+        <div class="g"><b>Pálio</b> é o dossel de tecido bordado que se carrega sobre autoridades e imagens em procissão. Palavra culta, precisa e visual: a imagem tem <b>contorno nítido</b>, dá para desenhar. Um simbolista diria "névoa", "vago", "branco fluido". O parnasiano dá o objeto exato.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Amai para entendê-las!"</div>
+        <div class="g">Aqui está o sentimento, sim. Mas veja onde: guardado para o <b>último terceto</b>, como fecho de ouro, e dito em tom de sentença. Emoção controlada e posta no lugar certo por decisão técnica. O romântico teria começado chorando no primeiro verso.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box alert">
+    <h5>O erro que derruba o aluno nesta questão</h5>
+    <p>Marcar Romantismo porque o poema fala de amor e de noite. <b>Tema não define escola.</b> Amor aparece em todas elas. O que define é como o poema é feito: forma rigorosa e imagem nítida entregam Parnasianismo; forma solta e emoção escancarada entregam Romantismo; som e vagueza entregam Simbolismo.</p>
+  </div>
+
+  <h3>Poema 3: o parnasiano que quase escorrega para o Simbolismo</h3>
+  <p>Raimundo Correia é o mais melancólico dos três grandes. Guarde isso, porque é fonte de pegadinha.</p>
+
+  <div class="poem">
+    <div class="ptitle">As pombas</div>
+    <div class="verses">Vai-se a primeira pomba despertada...
+Vai-se outra mais... mais outra... enfim dezenas
+De pombas vão-se dos pombais, apenas
+Raia sanguínea e fresca a madrugada...
+
+E à tarde, quando a rígida nortada
+Sopra, aos pombais de novo elas, serenas,
+Ruflando as asas, sacudindo as penas,
+Voltam todas em bando e em revoada...
+
+Também dos corações onde abotoam,
+Os sonhos, um por um, céleres voam,
+Como voam as pombas dos pombais;
+
+No azul da adolescência as asas soltam,
+Fogem... Mas aos pombais as pombas voltam,
+E eles aos corações não voltam mais...</div>
+    <div class="src">Raimundo Correia, em <i>Sinfonias</i>, 1883</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">Os dois quartetos inteiros</div>
+        <div class="g">São <b>pura descrição</b>, uma cena que o senhor consegue filmar: pombas saindo de manhã, pombas voltando de tarde. Nenhuma opinião, nenhum "eu". Objetividade e descritivismo, características 3 e 4.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Raia sanguínea e fresca a madrugada"</div>
+        <div class="g">"Raiar" é o verbo exato para o dia nascendo, e "sanguínea" dá a cor vermelha do amanhecer com uma palavra culta. Precisão vocabular, característica 5. Note que ele não diz "que manhã linda": ele mostra, não comenta.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Também dos corações onde abotoam, / Os sonhos, um por um, céleres voam"</div>
+        <div class="g">A virada. Só no <b>nono verso</b> a cena vira comparação com a vida humana. E repare no <b>controle</b>: a comparação é explicada com a palavra "como", tudo às claras. Um simbolista jamais explicaria a imagem, deixaria sugerida.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"E eles aos corações não voltam mais..."</div>
+        <div class="g">Melancolia real, e das boas: os sonhos da juventude não voltam. Mas é uma tristeza <b>concluída como raciocínio</b>, um fecho lógico do paralelo montado. Isso é Parnasianismo com pessimismo, não Simbolismo. O simbolista não fecha a conta, ele deixa o mistério aberto.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>Do mesmo autor, o soneto <strong>Mal secreto</strong> segue o mesmo mecanismo e é igualmente cobrado: "Se a cólera que espuma, a dor que mora / N'alma, e destrói cada ilusão que nasce, / Tudo o que punge, tudo o que devora / O coração, no rosto se estampasse". O poema constrói uma hipótese, desenvolve e fecha com a sentença: quanta gente que ri talvez exista "cuja ventura única consiste / Em parecer aos outros venturosa". Assunto psicológico, tratamento parnasiano: forma perfeita, raciocínio fechado.</p>
+
+  <h3>Poema 4: a poesia-objeto no estado mais puro</h3>
+  <p>Alberto de Oliveira é o mais "parnasiano dos parnasianos", justamente porque leva o descritivismo ao extremo: o poema inteiro é a descrição de um objeto de decoração.</p>
+
+  <div class="poem">
+    <div class="ptitle">Vaso chinês (primeira estrofe)</div>
+    <div class="verses">Estranho mimo aquele vaso! Vi-o,
+Casualmente, uma vez, de um perfumado
+Contador sobre o mármore luzidio,
+Entre um leque e o começo de um bordado.</div>
+    <div class="src">Alberto de Oliveira, em <i>Sonetos e poemas</i>, 1885</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">"Estranho mimo aquele vaso!"</div>
+        <div class="g">O assunto do poema é <b>um vaso</b>. Não uma paixão, não a pátria, não Deus. Um objeto de porcelana em cima de um móvel. Isso é a característica 4 no estado puro: <b>poesia-escultura</b>.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"de um perfumado / Contador sobre o mármore luzidio"</div>
+        <div class="g"><b>Contador</b> aqui não é profissão: é um móvel antigo de gavetas, palavra rara e exata. E o mármore aparece porque é o material da escultura clássica, presença quase obrigatória nesses poemas. Vocabulário preciosista, característica 5.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Entre um leque e o começo de um bordado"</div>
+        <div class="g">Enquadramento de <b>natureza-morta</b>, aquele quadro de objetos parados em cima da mesa. O poeta está compondo um quadro com palavras, sem colocar um pingo de si na cena. Impessoalidade, característica 3.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Os três autores que caem</h3>
+
+  <div class="author">
+    <div class="an">Olavo Bilac</div>
+    <div class="ad">1865 a 1918 · o chefe, o "Príncipe dos Poetas Brasileiros" (1907)</div>
+    <p>É o nome mais cobrado da escola inteira. Poeta de prestígio nacional, jornalista, defensor do serviço militar obrigatório, autor da letra do <b>Hino à Bandeira</b>. Escreveu o manifesto da escola em verso e também os sonetos mais decorados do país.</p>
+    <p>O que o distingue dos outros dois: Bilac consegue ser <b>tecnicamente perfeito e ainda assim emocionante</b>. É por isso que ele sobreviveu no gosto popular enquanto os colegas ficaram na sala de aula.</p>
+    <div class="works"><b>Obras:</b> <i>Poesias</i> (1888, que reúne as séries Panóplias, Via Láctea e Sarças de Fogo) e <i>Tarde</i> (1919, póstumo). <b>Poemas de prova:</b> "Profissão de fé", "Ora (direis) ouvir estrelas" (Via Láctea XIII), "Língua Portuguesa" ("Última flor do Lácio, inculta e bela"), "Nel mezzo del camin".</div>
+  </div>
+
+  <div class="author">
+    <div class="an">Alberto de Oliveira</div>
+    <div class="ad">1857 a 1937 · o mais rigoroso e o mais descritivo</div>
+    <p>Se a prova pedir "o mais fiel ao ideal parnasiano", é ele. Levou a objetividade e o culto ao objeto até o fim. Onde Bilac ainda deixa emoção passar, Alberto de Oliveira fecha a porta e descreve porcelana.</p>
+    <p>Marca registrada: os poemas sobre <b>vasos</b>. Objeto bonito, antigo, trabalhado à mão, exatamente o que a escola achava que um poema deveria ser.</p>
+    <div class="works"><b>Obras:</b> <i>Meridionais</i> (1884), <i>Sonetos e poemas</i> (1885), <i>Versos e rimas</i> (1895). <b>Poemas de prova:</b> "Vaso grego", "Vaso chinês".</div>
+  </div>
+
+  <div class="author">
+    <div class="an">Raimundo Correia</div>
+    <div class="ad">1859 a 1911 · o melancólico, o mais "quase simbolista"</div>
+    <p>Magistrado de carreira e poeta de temperamento pessimista. Mantém a forma parnasiana impecável, mas o conteúdo puxa para a tristeza, a passagem do tempo e a dor escondida. É a porta de entrada das pegadinhas de prova.</p>
+    <p>Como não errar: nele, mesmo a tristeza é <b>dita com clareza e fechada em conclusão</b>. Simbolista não conclui, dissolve.</p>
+    <div class="works"><b>Obras:</b> <i>Sinfonias</i> (1883), <i>Versos e versões</i> (1887), <i>Aleluias</i> (1891). <b>Poemas de prova:</b> "As pombas", "Mal secreto", "Plenilúnio".</div>
+  </div>
+
+  <div class="box key">
+    <h5>Guarde como bloco</h5>
+    <p><b>Bilac, Alberto de Oliveira e Raimundo Correia</b> são chamados de <b>tríade parnasiana</b>. Se a questão pedir "os três grandes nomes do Parnasianismo brasileiro", é esta a resposta, nesta ordem de importância.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= SIMBOLISMO ================= -->
+<section class="simb rev">
+  <div class="tag t-simb">Escola 2 de 3</div>
+  <h2>Simbolismo</h2>
+  <p class="lead">Enquanto o parnasiano esculpia mármore, o simbolista tentava escrever a névoa.</p>
+
+  <h3>De onde veio</h3>
+  <p>Também da França, e também como reação, mas na direção contrária. O ponto de partida é <strong>Charles Baudelaire</strong>, com o livro <i>As flores do mal</i> (1857), que trouxe a ideia de que o mundo visível é apenas a casca de um mundo invisível, e que os sentidos se comunicam entre si. Depois vieram <strong>Verlaine</strong> (que escreveu "a música antes de tudo"), <strong>Rimbaud</strong> e <strong>Mallarmé</strong>. O nome da escola foi oficializado pelo <strong>Manifesto Simbolista</strong>, de Jean Moréas, em 1886.</p>
+  <p>No Brasil, a data é <strong>1893</strong>, quando <strong>Cruz e Sousa</strong> publica dois livros de uma vez: <i>Missal</i> (poemas em prosa) e <i>Broquéis</i> (versos).</p>
+
+  <h3>O Brasil daquele momento, e por que isso importa aqui mais que nas outras escolas</h3>
+  <p>É o mesmo Brasil do Parnasianismo, mas visto de baixo. A abolição tinha acontecido em 1888 <strong>sem nenhum projeto</strong> para a vida dos libertos: nem terra, nem escola, nem emprego. A República positivista de 1889 tratava ciência como religião. E a Belle Époque carioca, com seu café chique e sua moda francesa, era uma festa da qual a maior parte do país estava excluída.</p>
+  <p><strong>Cruz e Sousa era filho de pais escravizados libertos.</strong> Foi alfabetizado e instruído pelo antigo senhor da família, teve formação sólida, e mesmo assim foi <strong>impedido de assumir o cargo de promotor público em Laguna por causa do racismo</strong> da sociedade local. Trabalhou como arquivista de estrada de ferro, viu três filhos morrerem, teve a mulher adoecida mentalmente, e morreu de tuberculose aos 36 anos, pobre. O corpo voltou de Minas para o Rio dentro de um vagão que transportava cavalos.</p>
+
+  <div class="box cool">
+    <h5>Por que essa biografia é matéria de prova, e não fofoca</h5>
+    <p>Porque explica o núcleo da poesia dele. Quando Cruz e Sousa escreve sobre <b>alma presa em cárcere</b>, sobre a <b>matéria que aprisiona o espírito</b>, sobre a obsessão com o <b>branco</b>, ele não está fazendo exercício de estilo: está transformando uma dor concreta e social em dor cósmica e universal. Por isso o chamam de <b>Cisne Negro</b> e de <b>Dante Negro</b>.</p>
+    <p>Segundo detalhe que cai: no Brasil, o Simbolismo foi <b>marginal e minoritário</b>, feito longe do eixo Rio e São Paulo (teve força no Sul, no Paraná e em Minas), enquanto o Parnasianismo era o gosto oficial da elite. Isso não é acaso: quem estava fora da festa escreveu a poesia do lado de fora.</p>
+  </div>
+
+  <div class="box cool">
+    <h5>Contra o que o Simbolismo estava reagindo</h5>
+    <ul class="plain">
+      <li>Contra o <b>Parnasianismo</b>, que ele achava frio, decorativo e vazio. Poesia de vitrine.</li>
+      <li>Contra o <b>Realismo e o Naturalismo</b>, que explicavam o homem por meio de ciência, meio e hereditariedade. Para o simbolista, o essencial do homem não cabe em microscópio.</li>
+      <li>Contra o <b>positivismo</b> e o materialismo em geral. Se só vale o que se mede, o que fazer com a alma, a morte, Deus, o sonho?</li>
+      <li>Atenção: <b>não</b> é uma volta ao Romantismo. O romântico é subjetivo por causa do amor e do próprio umbigo. O simbolista é subjetivo por causa do <b>inconsciente, do mistério e da condição humana</b>.</li>
+    </ul>
+  </div>
+
+  <h3>As sete características, e como reconhecer cada uma</h3>
+  <ul class="chars">
+    <li><span class="n">1</span><b>Musicalidade</b>A característica número um. O poema tem que <b>soar</b> antes de significar. Usa aliteração (repetição de consoantes, "violões que choram") e assonância (repetição de vogais). Leia em voz alta: se parecer canto ou reza, é simbolista.</li>
+    <li><span class="n">2</span><b>Sugestão em vez de descrição</b>O parnasiano nomeia o objeto. O simbolista <b>rodeia</b> o objeto para o leitor sentir sem que ele precise dizer. Não descreve a dor, cria um clima em que a dor aparece.</li>
+    <li><span class="n">3</span><b>Sinestesia</b>Mistura de sentidos diferentes na mesma imagem: som que tem cor, cheiro que tem temperatura, luz que tem gosto. Exemplo: "sons de ouro", "brancas melodias". É a marca mais fácil de apontar numa questão.</li>
+    <li><span class="n">4</span><b>Vocabulário místico e religioso</b>Palavras de igreja aparecem o tempo todo: incenso, turíbulo (o recipiente de incenso), ara (altar), hóstia, missal, claustro. Não é necessariamente fé: é a busca do sagrado como território do que não se explica.</li>
+    <li><span class="n">5</span><b>Maiúsculas alegorizantes</b>Substantivos comuns escritos com letra maiúscula no meio do verso: as Formas, os Astros, a Dor, o Ideal, o Sonho. Isso transforma a palavra em <b>entidade</b>, em algo maior que a coisa. É quase uma impressão digital: viu maiúscula estranha no meio do verso, pense em Simbolismo.</li>
+    <li><span class="n">6</span><b>Obsessão pelo branco e pelo vago</b>Neve, neblina, névoa, luar, cristal, nuvem, hóstia, cisne. Tudo o que é branco, translúcido e sem contorno firme. É o oposto exato do mármore parnasiano, que é branco mas <b>duro e definido</b>.</li>
+    <li><span class="n">7</span><b>Angústia existencial e dualismo</b>A briga permanente entre <b>matéria e espírito</b>: o corpo prende, a alma quer subir. Daí os temas de cárcere, prisão, jaula, e também de ascensão, voo, luz.</li>
+  </ul>
+
+  <h3>Poema 1: o cartão de visitas da escola no Brasil</h3>
+  <p>É o poema que abre <i>Broquéis</i>, o livro que inaugurou o Simbolismo brasileiro. Se cair um poema simbolista na prova, há grande chance de ser este.</p>
+
+  <div class="poem">
+    <div class="ptitle">Antífona (primeira estrofe)</div>
+    <div class="verses">Ó Formas alvas, brancas, Formas claras
+De luares, de neves, de neblinas!...
+Ó Formas vagas, fluidas, cristalinas...
+Incensos dos turíbulos das aras...</div>
+    <div class="src">Cruz e Sousa, em <i>Broquéis</i>, 1893</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">O título: "Antífona"</div>
+        <div class="g">Antífona é o <b>canto alternado da liturgia católica</b>, aquele trecho que o coro responde ao padre. Antes do primeiro verso, o título já avisa duas coisas: isto é <b>música</b> (característica 1) e isto é <b>religião</b> (característica 4).</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Ó Formas alvas, brancas, Formas claras"</div>
+        <div class="g">Três palavras para a mesma cor: alvas, brancas, claras. Um parnasiano cortaria duas por redundância. O simbolista mantém as três porque <b>o efeito não é informar, é embalar</b> pelo som e pelo acúmulo. E repare: <b>Formas</b> com F maiúsculo, característica 5, transformando a palavra numa entidade quase divina.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"De luares, de neves, de neblinas!..."</div>
+        <div class="g">Os três substantivos são coisas <b>brancas e sem contorno</b>: luar, neve, neblina (característica 6). E os três terminam em som nasal, criando musicalidade. Compare com o vaso de Alberto de Oliveira: lá dava para desenhar o objeto, aqui não dá para desenhar nada. Essa é a diferença central entre as duas escolas.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Ó Formas vagas, fluidas, cristalinas..."</div>
+        <div class="g">"Vagas" e "fluidas" são adjetivos que <b>recusam a definição</b>, o oposto do preciosismo parnasiano. E os pontinhos no fim (reticências) aparecem em quase todo verso: o poema não fecha ideia, ele <b>deixa em suspensão</b>. Sugestão em vez de descrição, característica 2.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Incensos dos turíbulos das aras..."</div>
+        <div class="g"><b>Turíbulo</b> é o incensário, aquele recipiente de metal que balança e solta fumaça na missa. <b>Ara</b> é o altar. O verso inteiro é vocabulário de igreja (característica 4), e a imagem escolhida é <b>fumaça</b>: cheiro que se vê, matéria que quase não é matéria, tudo subindo. Aqui há sinestesia (característica 3): o incenso é cheiro, mas é apresentado como imagem visual dentro de uma música.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Poema 2: musicalidade escancarada</h3>
+  <p>Se a questão pedir para "identificar a aliteração", este é o exemplo clássico da literatura brasileira.</p>
+
+  <div class="poem">
+    <div class="ptitle">Violões que choram (primeira estrofe)</div>
+    <div class="verses">Ah! plangentes violões dormentes, mornos,
+Soluços ao luar, choros ao vento...
+Tristes perfis, os mais vagos contornos,
+Bocas murmurejantes de lamento...</div>
+    <div class="src">Cruz e Sousa, em <i>Faróis</i>, 1900 (póstumo)</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">"plangentes violões dormentes, mornos"</div>
+        <div class="g">Conte os sons: <b>pl, l, v, l, d, rm, m, rn</b>. É uma sequência de consoantes líquidas e nasais, exatamente os sons mais "moles" do português. O verso <b>imita o som de um violão</b>. Isso é aliteração a serviço da característica 1. "Plangente", aliás, significa "que se queixa, que geme".</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Soluços ao luar, choros ao vento..."</div>
+        <div class="g">Aqui está a <b>sinestesia</b> (característica 3): soluço é som, luar é luz. O poema junta os dois numa imagem só, como se o choro fosse feito de luz. E note o branco de novo: <b>luar</b>, característica 6.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Tristes perfis, os mais vagos contornos"</div>
+        <div class="g">O verso <b>declara o método da escola</b>. Contorno vago é a negação do desenho nítido. Onde o parnasiano queria linha firme, o simbolista quer borrão. Se este verso cair numa prova pedindo "qual característica está exemplificada", a resposta é a sugestão, a imprecisão proposital.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Bocas murmurejantes de lamento..."</div>
+        <div class="g">"Murmurejante" é palavra quase inventada, escolhida <b>pelo som</b> (murmúrio dentro dela) e não pela precisão. É o contrário do preciosismo parnasiano, onde a palavra rara servia para dar exatidão. Aqui a palavra rara serve para dar <b>ruído</b>.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Poema 3: a angústia existencial</h3>
+
+  <div class="poem">
+    <div class="ptitle">Cárcere das almas (primeira estrofe)</div>
+    <div class="verses">Ah! Toda a alma num cárcere anda presa,
+Soluçando nas trevas, entre as grades
+Do calabouço olhando imensidades,
+Mares, estrelas, tardes, natureza.</div>
+    <div class="src">Cruz e Sousa, em <i>Últimos sonetos</i>, 1905 (póstumo)</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">"Toda a alma num cárcere anda presa"</div>
+        <div class="g">O <b>dualismo matéria e espírito</b> (característica 7) em uma frase. A alma é prisioneira do corpo, do mundo, da condição humana. E o poeta diz "<b>toda</b> a alma": não é a dor dele, é a de todo mundo. Compare com o Romantismo, onde a dor é sempre pessoal e por causa de alguém.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"entre as grades / Do calabouço"</div>
+        <div class="g">Vindo de quem veio, a imagem da prisão carrega também a memória concreta da escravidão e do racismo que fecharam portas na vida dele. Universal e biográfico ao mesmo tempo. Isso é o que torna Cruz e Sousa maior que a escola dele.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"olhando imensidades, / Mares, estrelas, tardes, natureza"</div>
+        <div class="g">Quatro substantivos empilhados sem conectivo, criando <b>ritmo de ladainha</b>. E todos são <b>infinitos e sem forma</b>: mar, estrela, tarde, natureza. O preso olha exatamente aquilo que não tem grade. Sugestão pura, característica 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Poema 4: o outro grande nome</h3>
+  <p>Alphonsus de Guimaraens leva o Simbolismo para o lado do <strong>misticismo católico</strong> e da <strong>morte da amada</strong>. Este poema é curto, hipnótico e cai muito.</p>
+
+  <div class="poem">
+    <div class="ptitle">Ismália</div>
+    <div class="verses">Quando Ismália enlouqueceu,
+Pôs-se na torre a sonhar...
+Viu uma lua no céu,
+Viu outra lua no mar.
+
+No sonho em que se perdeu,
+Banhou-se toda em luar...
+Queria subir ao céu,
+Queria descer ao mar...
+
+E, no desvario seu,
+Na torre pôs-se a cantar...
+Estava perto do céu,
+Estava longe do mar...
+
+E como um anjo pendeu
+As asas para voar...
+Queria a lua do céu,
+Queria a lua do mar...
+
+As asas que Deus lhe deu
+Ruflaram de par em par...
+Sua alma subiu ao céu,
+Seu corpo desceu ao mar.</div>
+    <div class="src">Alphonsus de Guimaraens, em <i>Dona Mística</i>, 1899</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">A estrutura inteira</div>
+        <div class="g">Cinco estrofes de quatro versos curtos, com <b>as mesmas rimas do início ao fim</b> (eu / ar). Isso produz um efeito de <b>ninar</b>, de cantiga, de repetição hipnótica. Musicalidade (característica 1) construída pela forma toda, não por um verso isolado.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Viu uma lua no céu, / Viu outra lua no mar"</div>
+        <div class="g">A lua do mar é <b>reflexo</b>, não é lua. Aqui está a chave: o mundo visível é imagem enganosa de outra coisa. Duas luas, dois mundos, e a moça no meio. Isso é <b>símbolo</b>, e é daí que vem o nome da escola.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Queria subir ao céu, / Queria descer ao mar..."</div>
+        <div class="g">Os dois desejos são <b>opostos e simultâneos</b>. Não há escolha possível: é o <b>dualismo matéria e espírito</b> (característica 7) posto em movimento. Subir é alma, descer é corpo. A loucura de Ismália é a condição humana normal, só que sem freio.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Sua alma subiu ao céu, / Seu corpo desceu ao mar."</div>
+        <div class="g">O único momento do poema <b>sem reticências</b>, terminado em ponto final. A divisão se cumpre: alma para cima, corpo para baixo. Repare que o poema descreve um suicídio sem nunca dizer a palavra. Sugestão em vez de descrição, característica 2, levada ao limite.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Os dois autores que caem</h3>
+
+  <div class="author">
+    <div class="an">Cruz e Sousa</div>
+    <div class="ad">1861 a 1898 · o Cisne Negro, o maior nome do Simbolismo brasileiro</div>
+    <p>Catarinense de Desterro (hoje Florianópolis), filho de pais escravizados libertos. Abolicionista, jornalista, poeta. Enfrentou racismo em toda a carreira, inclusive a recusa do cargo de promotor em Laguna. Morreu de tuberculose aos 36 anos.</p>
+    <p>Poesia marcada por <b>musicalidade extrema</b>, obsessão pelo <b>branco</b>, vocabulário religioso, maiúsculas alegorizantes e a dor da alma presa na matéria. Se a questão pedir "o nome que inaugura o Simbolismo no Brasil", é ele, com os dois livros de 1893.</p>
+    <div class="works"><b>Obras:</b> <i>Missal</i> e <i>Broquéis</i> (ambos de 1893), <i>Faróis</i> (1900, póstumo), <i>Últimos sonetos</i> (1905, póstumo). <b>Poemas de prova:</b> "Antífona", "Violões que choram", "Cárcere das almas".</div>
+  </div>
+
+  <div class="author">
+    <div class="an">Alphonsus de Guimaraens</div>
+    <div class="ad">1870 a 1921 · o poeta de Mariana, o místico</div>
+    <p>Mineiro, juiz de direito em Mariana, católico devoto, viveu isolado do circuito literário. A grande marca biográfica é a <b>morte da noiva, Constança</b>, que vira musa morta e assombra a obra inteira, no cruzamento entre amor, morte e religião.</p>
+    <p>Se Cruz e Sousa é o Simbolismo da <b>angústia cósmica</b>, Alphonsus é o Simbolismo da <b>devoção e do luto</b>. Vocabulário de liturgia, Nossa Senhora, torres, sinos, luar, azul.</p>
+    <div class="works"><b>Obras:</b> <i>Setenário das dores de Nossa Senhora e Câmara ardente</i> (1899), <i>Dona Mística</i> (1899), <i>Kiriale</i> (1902). <b>Poema de prova:</b> "Ismália", disparado o mais cobrado.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= PRÉ-MODERNISMO ================= -->
+<section class="prem rev">
+  <div class="tag t-prem">Escola 3 de 3, e aqui mora a pegadinha</div>
+  <h2>Pré-modernismo</h2>
+
+  <div class="box alert">
+    <h5>Leia isto antes de qualquer outra coisa</h5>
+    <p><b>Pré-modernismo não é uma escola literária.</b> Não teve manifesto, não teve grupo, não teve programa comum, não teve revista. Os autores nem se consideravam parte de um movimento, e alguns se detestavam.</p>
+    <p>É um <b>rótulo dado depois</b>, pelo crítico <b>Tristão de Athayde</b> (pseudônimo de Alceu Amoroso Lima), para nomear o período de <b>1902 a 1922</b>, ou seja, o intervalo entre o fim das escolas do século XIX e a Semana de Arte Moderna. É um <b>período de transição</b>, uma ponte.</p>
+    <p>Se a prova perguntar "quais as características da escola pré-modernista", a resposta certa <b>começa por corrigir a pergunta</b>. Escrever isso vale ponto.</p>
+  </div>
+
+  <h3>O Brasil daquele momento</h3>
+  <p>É a <strong>República Velha</strong>, e ela era bem menos bonita que a Belle Époque do centro do Rio. Funcionava assim:</p>
+  <ul class="plain">
+    <li><b>Política do café com leite</b>: São Paulo (café) e Minas Gerais (leite) revezavam a presidência entre si, num acordo fechado.</li>
+    <li><b>Coronelismo e voto de cabresto</b>: no interior, o coronel dono de terra mandava em como o povo votava. O voto era aberto, então dava para conferir e punir.</li>
+    <li><b>Analfabetismo em torno de 75% da população</b>. Um país de leitores minúsculo.</li>
+    <li><b>Revoltas em série</b>: Guerra de Canudos (1896 a 1897), Revolta da Vacina (1904), Revolta da Chibata (1910), Guerra do Contestado (1912 a 1916).</li>
+    <li><b>Primeira Guerra Mundial</b> (1914 a 1918) desmontando a fé no progresso europeu que a elite brasileira tanto imitava.</li>
+    <li><b>Bota-abaixo no Rio</b>: reforma urbana que derrubou cortiços para abrir avenidas e empurrou os pobres para os morros.</li>
+  </ul>
+
+  <div class="box alert">
+    <h5>A fratura que explica o período inteiro</h5>
+    <p>Existiam <b>dois Brasis</b> e eles não se conheciam.</p>
+    <p>O <b>Brasil oficial</b>: litoral, elite, francês na boca, positivismo na cabeça, poesia parnasiana no salão, cidade sendo reformada para parecer Europa.</p>
+    <p>O <b>Brasil real</b>: sertão, subúrbio, caboclo doente, ex-escravizado sem lugar, favela recém-nascida no morro, fome, verminose, coronel.</p>
+    <p>O Pré-modernismo é, todo ele, a literatura que <b>foi lá ver o segundo Brasil e voltou para contar</b>. Se o senhor entender isso, os cinco autores fazem sentido de uma vez só, porque cada um foi olhar um pedaço diferente do mesmo país escondido.</p>
+  </div>
+
+  <h3>Contra o que o Pré-modernismo estava reagindo</h3>
+  <p>Contra a <strong>literatura de salão</strong>, aquela que era tecnicamente linda e não dizia nada sobre o país onde era escrita. Contra o Parnasianismo como gosto oficial, contra o vocabulário rebuscado por status, contra a ideia de que arte não precisa ter assunto.</p>
+  <p>Mas atenção ao tamanho da reação: eles <strong>mudaram o assunto sem mudar a forma</strong>. Ainda escreviam em português culto, ainda usavam estrutura tradicional de romance e de soneto. Quem quebrou a forma foi o Modernismo, em 1922. Por isso o nome tem "pré": é o aviso do que estava chegando.</p>
+
+  <h3>As cinco características do período</h3>
+  <ul class="chars">
+    <li><span class="n">1</span><b>Denúncia da realidade brasileira</b>O país vira problema a ser encarado. Miséria, atraso, abandono do interior, racismo, burocracia inútil, doença.</li>
+    <li><span class="n">2</span><b>Personagem marginalizado no centro</b>Sertanejo, caboclo, mulato, funcionário público pobre, morador de subúrbio, imigrante. Gente que a literatura anterior usava como paisagem, aqui vira protagonista.</li>
+    <li><span class="n">3</span><b>Regionalismo</b>O Brasil de dentro entra na literatura: sertão da Bahia, Vale do Paraíba, subúrbio carioca, colônia alemã no Espírito Santo.</li>
+    <li><span class="n">4</span><b>Nacionalismo crítico</b>Ama-se o país apontando o que está errado nele. É o oposto do <b>ufanismo</b> (aquele patriotismo de "esta é a terra mais bonita do mundo"), que era o discurso oficial da época.</li>
+    <li><span class="n">5</span><b>Sincretismo e linguagem ainda tradicional</b>Cada autor mistura restos das escolas anteriores do seu jeito (naturalismo em um, simbolismo em outro, parnasianismo em outro). A linguagem começa a ficar mais direta e coloquial em alguns, mas ainda não há a ruptura formal do Modernismo.</li>
+  </ul>
+
+  <h3>Poema: o mais estranho da literatura brasileira</h3>
+  <p>Augusto dos Anjos é o único poeta forte do período, e o mais difícil de classificar. Este soneto abre o livro <i>Eu</i>, de 1912.</p>
+
+  <div class="poem">
+    <div class="ptitle">Psicologia de um vencido</div>
+    <div class="verses">Eu, filho do carbono e do amoníaco,
+Monstro de escuridão e rutilância,
+Sofro, desde a epigênese da infância,
+A influência má dos signos do zodíaco.
+
+Profundissimamente hipocondríaco,
+Este ambiente me causa repugnância...
+Sobe-me à boca uma ânsia análoga à ânsia
+Que se escapa da boca de um cardíaco.
+
+Já o verme — este operário das ruínas —
+Que o sangue podre das carnificinas
+Come, e à vida em geral declara guerra,
+
+Anda a espreitar meus olhos para roê-los,
+E há de deixar-me apenas os cabelos,
+Na frialdade inorgânica da terra!</div>
+    <div class="src">Augusto dos Anjos, em <i>Eu</i>, 1912</div>
+
+    <div class="gloss">
+      <div class="gl">
+        <div class="v">A forma: soneto perfeito</div>
+        <div class="g">Catorze versos decassílabos, rima organizada. <b>A forma é parnasiana</b>. Guarde isso: em Augusto dos Anjos, o escândalo nunca está na forma, está no que ele coloca dentro dela.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Eu, filho do carbono e do amoníaco"</div>
+        <div class="g">O poeta se apresenta como <b>fórmula química</b>. Não é filho de pai e mãe, é filho de elementos. Isso é o cientificismo naturalista invadindo a poesia. Nenhum parnasiano faria isso (feio demais) e nenhum simbolista faria isso (material demais).</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Monstro de escuridão e rutilância"</div>
+        <div class="g">"Rutilância" é brilho intenso. O verso junta <b>trevas e brilho na mesma criatura</b>: o homem é matéria podre e espírito luminoso ao mesmo tempo. Esse dualismo é herança <b>simbolista</b>. Já dá para ver a mistura de três escolas em quatro versos.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Já o verme — este operário das ruínas —"</div>
+        <div class="g">O verso mais famoso do livro. O verme é chamado de <b>operário</b>, palavra da industrialização e do trabalho urbano. A morte não é anjo nem mistério: é <b>serviço industrial de decomposição</b>. Poesia com vocabulário de necrotério e de fábrica, algo que ninguém tinha feito em português.</div>
+      </div>
+      <div class="gl">
+        <div class="v">"Na frialdade inorgânica da terra!"</div>
+        <div class="g">"Inorgânica" é termo de química: sem vida, sem carbono orgânico. O poema termina reduzindo o ser humano a <b>matéria bruta</b>. Sem consolo religioso, sem beleza, sem final elevado. É por isso que Augusto dos Anjos entra no Pré-modernismo: ele quebra o decoro da literatura de salão, mesmo mantendo a forma antiga.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box alert">
+    <h5>Por que Augusto dos Anjos cai tanto em prova</h5>
+    <p>Porque ele é <b>inclassificável de propósito</b>. Tem forma parnasiana, dualismo simbolista, vocabulário científico naturalista e assunto de decomposição que não é de escola nenhuma. Ele é colocado no Pré-modernismo justamente por não caber em nenhuma gaveta e por estar no período certo. Se a questão pedir "o autor que sintetiza várias tendências e não se enquadra em nenhuma escola", é ele. Livro único: <i>Eu</i>, 1912.</p>
+  </div>
+
+  <h3>Os cinco autores que caem</h3>
+
+  <div class="author">
+    <div class="an">Euclides da Cunha</div>
+    <div class="ad">1866 a 1909 · engenheiro, jornalista, autor do livro que abre o período</div>
+    <p><i>Os sertões</i> (1902) nasce da cobertura jornalística da <b>Guerra de Canudos</b>, no sertão da Bahia, onde o Exército da nova República massacrou o arraial de Antônio Conselheiro. O livro é dividido em <b>três partes</b>, e essa divisão cai em prova: <b>A Terra</b> (geografia e clima), <b>O Homem</b> (o sertanejo e sua formação) e <b>A Luta</b> (a guerra em si).</p>
+    <p>A grande virada interna: Euclides foi para lá acreditando nas <b>teorias racistas</b> em voga, que diziam que a mistura de raças gerava gente inferior. Diante do que viu, ele se contradiz e acaba escrevendo a frase mais famosa do livro: <b>"O sertanejo é, antes de tudo, um forte."</b> A obra denuncia o massacre e registra que <b>Canudos não se rendeu</b>.</p>
+    <p>Estilo: mistura de linguagem <b>científica</b> (geologia, biologia, estatística) com prosa dramática e vocabulário difícil. É o exemplo mais claro da característica 5, o sincretismo.</p>
+    <div class="works"><b>Obras:</b> <i>Os sertões</i> (1902), <i>Contrastes e confrontos</i> (1907), <i>À margem da história</i> (1909).</div>
+  </div>
+
+  <div class="author">
+    <div class="an">Lima Barreto</div>
+    <div class="ad">1881 a 1922 · o cronista do subúrbio carioca</div>
+    <p>Negro, pobre, funcionário público, morador do subúrbio, internado duas vezes por alcoolismo, morto aos 41 anos no mesmo ano da Semana de 22. Escreveu de dentro do Brasil que os outros descreviam de fora.</p>
+    <p><i>Triste fim de Policarpo Quaresma</i> (1911) é a obra mais cobrada: conta a história de um <b>patriota ingênuo</b> que quer salvar o Brasil (propõe o tupi como língua oficial, tenta a agricultura, apoia o governo na revolta) e é traído e destruído pelo próprio país que amava. É o ataque direto ao <b>ufanismo</b>, característica 4.</p>
+    <p>Estilo: <b>linguagem simples de propósito</b>, quase de crônica de jornal, contra o rebuscamento dos escritores de prestígio da época, especialmente Coelho Neto, seu adversário declarado. Temas: racismo, burocracia, preconceito social, loucura, subúrbio.</p>
+    <div class="works"><b>Obras:</b> <i>Recordações do escrivão Isaías Caminha</i> (1909), <i>Triste fim de Policarpo Quaresma</i> (1911), <i>Vida e morte de M. J. Gonzaga de Sá</i> (1919), <i>Clara dos Anjos</i> (1948, póstumo).</div>
+  </div>
+
+  <div class="author">
+    <div class="an">Monteiro Lobato</div>
+    <div class="ad">1882 a 1948 · o criador do Jeca Tatu, e o inimigo do Modernismo</div>
+    <p><i>Urupês</i> (1918) apresenta o <b>Jeca Tatu</b>, o caboclo do Vale do Paraíba retratado de início como <b>preguiçoso e parasita</b> (urupê é um cogumelo que vive de tronco podre). Depois, diante das campanhas sanitaristas, Lobato <b>revê a própria tese</b>: o Jeca não é preguiçoso, está <b>doente e abandonado</b>, cheio de verminose e sem saúde pública. Essa mudança de posição cai em prova.</p>
+    <p>Detalhe que confunde e por isso é cobrado: em 1917, Lobato escreveu o artigo <b>"Paranoia ou mistificação?"</b>, atacando duramente a exposição de <b>Anita Malfatti</b>, pintora que os futuros modernistas defendiam. Ou seja, ele é pré-modernista e ao mesmo tempo <b>adversário</b> do Modernismo que viria em 1922. Mais tarde, tornou-se o grande nome da literatura infantil brasileira com o Sítio do Picapau Amarelo.</p>
+    <div class="works"><b>Obras do período:</b> <i>Urupês</i> (1918), <i>Cidades mortas</i> (1919), <i>Negrinha</i> (1920).</div>
+  </div>
+
+  <div class="author">
+    <div class="an">Augusto dos Anjos</div>
+    <div class="ad">1884 a 1914 · o poeta da matéria em decomposição</div>
+    <p>Paraibano, professor, morto aos 30 anos de pneumonia. Publicou <b>um único livro</b>, <i>Eu</i> (1912), pago do próprio bolso, e foi tratado como esquisito pela crítica da época. Hoje é um dos poetas mais lidos do país.</p>
+    <p>Marca: <b>vocabulário científico dentro do soneto</b> (carbono, amoníaco, bacilo, epigênese, verme, inorgânico) para falar de morte, apodrecimento e angústia. Junta forma parnasiana, dualismo simbolista e cientificismo naturalista numa coisa só.</p>
+    <div class="works"><b>Obra:</b> <i>Eu</i> (1912). <b>Poemas de prova:</b> "Psicologia de um vencido", "Versos íntimos" ("Toma um fósforo. Acende teu cigarro! / O beijo, amigo, é a véspera do escarro"), "O lamento das coisas".</div>
+  </div>
+
+  <div class="author">
+    <div class="an">Graça Aranha</div>
+    <div class="ad">1868 a 1931 · a ponte viva entre os dois períodos</div>
+    <p><i>Canaã</i> (1902) sai no mesmo ano de <i>Os sertões</i> e divide com ele a data de abertura do Pré-modernismo. O romance acompanha dois <b>imigrantes alemães</b> no Espírito Santo, <b>Milkau</b> e <b>Lentz</b>, que discutem o futuro do Brasil: Milkau acredita na mistura de povos e na fraternidade; Lentz defende a superioridade da raça germânica. O livro é, no fundo, um <b>debate de ideias sobre que país o Brasil vai ser</b>. "Canaã" é o nome da terra prometida na Bíblia, e o título pergunta se o Brasil é mesmo essa terra.</p>
+    <p>O detalhe que faz dele questão de prova: Graça Aranha era membro da Academia Brasileira de Letras e mesmo assim <b>participou da Semana de Arte Moderna de 1922</b>, com a conferência "A emoção estética na arte moderna", rompendo depois com a Academia. É o autor que atravessa a fronteira entre os dois períodos com o próprio corpo.</p>
+    <div class="works"><b>Obras:</b> <i>Canaã</i> (1902), <i>A estética da vida</i> (1921), <i>Espírito moderno</i> (1925).</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= COMO NÃO ERRAR ================= -->
+<section class="rev">
+  <h2>Como não errar na hora da prova</h2>
+  <p class="lead">Esta é a parte que decide nota. Todo mundo estuda as características e mesmo assim erra a identificação, porque na prova o texto vem sem etiqueta.</p>
+
+  <h3>Confusão 1: Parnasianismo e Simbolismo</h3>
+  <p>É a mais comum, e a razão é histórica: <strong>os dois são contemporâneos e opostos</strong>. Conviveram de 1893 a 1922. Não é um depois do outro, é um <strong>contra</strong> o outro, ao mesmo tempo, disputando os mesmos leitores. Enquanto o Parnasianismo era o gosto oficial e premiado, o Simbolismo era coisa de gente à margem.</p>
+
+  <div class="radar">
+    <div class="rcard p">
+      <h6>Radar Parnasiano</h6>
+      <div class="words"><span>mármore</span><span>vaso</span><span>taça</span><span>ourives</span><span>cinzel</span><span>lima</span><span>escultura</span><span>ouro</span><span>relevo</span><span>forma</span><span>grego</span><span>estátua</span><span>soneto perfeito</span><span>contorno nítido</span></div>
+    </div>
+    <div class="rcard s">
+      <h6>Radar Simbolista</h6>
+      <div class="words"><span>alma</span><span>branco</span><span>névoa</span><span>neblina</span><span>luar</span><span>violão</span><span>soluço</span><span>incenso</span><span>turíbulo</span><span>Astros</span><span>Formas</span><span>Dor</span><span>vago</span><span>reticências...</span></div>
+    </div>
+    <div class="rcard m">
+      <h6>Radar Pré-moderno</h6>
+      <div class="words"><span>sertão</span><span>subúrbio</span><span>caboclo</span><span>Canudos</span><span>coronel</span><span>verme</span><span>bacilo</span><span>carbono</span><span>miséria</span><span>república</span><span>doença</span><span>Jeca</span><span>burocracia</span><span>denúncia</span></div>
+    </div>
+  </div>
+
+  <div class="box key">
+    <h5>O teste de uma pergunta só, entre Parnasianismo e Simbolismo</h5>
+    <p><b>"Eu consigo desenhar isto?"</b></p>
+    <p>Se o poema descreve algo com contorno nítido, que caberia num desenho a lápis (um vaso, uma taça, pombas saindo do pombal, a Via Láctea como um pálio), é <b>Parnasianismo</b>.</p>
+    <p>Se o poema é feito de coisas sem borda, que o senhor só consegue <b>sentir e ouvir</b> (formas vagas, neblina, soluços ao luar, a alma presa), é <b>Simbolismo</b>.</p>
+    <p>Segundo teste, de reforço: <b>leia em voz alta</b>. Se soar como discurso bem construído, é parnasiano. Se soar como reza ou música, é simbolista.</p>
+  </div>
+
+  <h3>Confusão 2: Simbolismo e Romantismo</h3>
+  <p>Os dois são subjetivos, os dois falam de dor, os dois falam de morte. A diferença está em <strong>de que dor se trata</strong> e em <strong>como ela é dita</strong>.</p>
+  <ul class="plain">
+    <li>O romântico sofre <b>por alguém e por si mesmo</b>: a amada que não o quis, a saudade da pátria, a própria juventude perdida. Dor com nome e endereço.</li>
+    <li>O simbolista sofre <b>pela condição humana</b>: a alma presa na matéria, o mistério de Deus, o vazio. Dor sem endereço, e que serve para todo mundo.</li>
+    <li>O romântico <b>diz o que sente</b>, com clareza e exclamação. O simbolista <b>sugere</b>, com névoa, som e reticência.</li>
+  </ul>
+
+  <h3>Confusão 3: Pré-modernismo e Modernismo</h3>
+  <ul class="plain">
+    <li>O <b>Pré-modernismo</b> (1902 a 1922) muda <b>o assunto</b>: fala do Brasil real. Mas mantém a <b>forma tradicional</b>, o português culto, o soneto, o romance clássico.</li>
+    <li>O <b>Modernismo</b> (a partir de 1922) muda <b>a forma também</b>: verso livre sem métrica nem rima, humor e deboche, linguagem coloquial radical, "errar" o português de propósito.</li>
+    <li>Resumo: um trocou o que se conta, o outro trocou o jeito de contar. E lembre que o Pré-modernismo <b>não é escola</b>, é período.</li>
+  </ul>
+
+  <h3>O fluxograma que resolve qualquer trecho</h3>
+  <div class="flow">
+    <div class="step">
+      <div class="q">Pergunta 1: o texto fala do Brasil real, com sertão, subúrbio, pobreza, doença, política ou personagem marginalizado?</div>
+      <div class="a">Se sim, é <b>Pré-modernismo</b>, e nem precisa das outras perguntas. Nem Parnasianismo nem Simbolismo tratam desses assuntos.</div>
+    </div>
+    <div class="arrow">↓ se não</div>
+    <div class="step">
+      <div class="q">Pergunta 2: dá para desenhar o que está sendo dito, com palavra rara, forma rigorosa e imagem de contorno firme?</div>
+      <div class="a">Se sim, é <b>Parnasianismo</b>. Procure confirmação: soneto, decassílabo, objeto descrito, mitologia grega, ausência do "eu".</div>
+    </div>
+    <div class="arrow">↓ se não</div>
+    <div class="step">
+      <div class="q">Pergunta 3: o texto é feito de som, branco, névoa, alma, religião e maiúscula estranha no meio do verso?</div>
+      <div class="a">Se sim, é <b>Simbolismo</b>. Procure confirmação: aliteração, sinestesia, reticências, dualismo entre matéria e espírito.</div>
+    </div>
+    <div class="arrow">↓ se nada bate</div>
+    <div class="step">
+      <div class="q">Sobrou emoção escancarada, "eu sofro por ela", forma solta e exclamação?</div>
+      <div class="a">Então é <b>Romantismo</b>, que é matéria anterior, e a banca colocou ali como pegadinha de comparação.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= TABELA ================= -->
+<section class="rev">
+  <h2>As três lado a lado</h2>
+  <p>Se o senhor decorar uma só coisa desta apostila na véspera, decore esta tabela.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Critério</th><th>Parnasianismo</th><th>Simbolismo</th><th>Pré-modernismo</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Período</th><td>1882 a 1922</td><td>1893 a 1922</td><td>1902 a 1922</td></tr>
+        <tr><th>Marco inicial</th><td><i>Fanfarras</i>, Teófilo Dias</td><td><i>Missal</i> e <i>Broquéis</i>, Cruz e Sousa</td><td><i>Os sertões</i> e <i>Canaã</i></td></tr>
+        <tr><th>É escola?</th><td>Sim, com programa claro</td><td>Sim, com manifesto (França, 1886)</td><td><b>Não</b>. É período de transição, nome dado depois por Tristão de Athayde</td></tr>
+        <tr><th>Reage contra</th><td>O Romantismo e seu sentimentalismo</td><td>O Parnasianismo, o Realismo e o cientificismo</td><td>A literatura de salão que ignorava o país</td></tr>
+        <tr><th>Postura do poeta</th><td>Impessoal, some do poema</td><td>Subjetivo, mergulha no interior e no místico</td><td>Observador crítico da sociedade</td></tr>
+        <tr><th>Palavra-chave</th><td>Forma</td><td>Sugestão</td><td>Denúncia</td></tr>
+        <tr><th>Linguagem</th><td>Culta, precisa, preciosista, vocabulário raro e exato</td><td>Musical, vaga, sinestésica, maiúsculas alegorizantes</td><td>Ainda tradicional, mas mais direta, com toques coloquiais</td></tr>
+        <tr><th>Imagem típica</th><td>Vaso, mármore, estátua, joia, ourives</td><td>Neblina, luar, alma, incenso, cisne branco</td><td>Sertão, subúrbio, verme, caboclo, cortiço</td></tr>
+        <tr><th>Forma preferida</th><td>Soneto em decassílabo, métrica rigorosa</td><td>Verso musical, repetição, refrão, forma livre para o som</td><td>Sobretudo <b>prosa</b> (romance e ensaio); em verso, só Augusto dos Anjos</td></tr>
+        <tr><th>Gênero dominante</th><td>Poesia</td><td>Poesia</td><td>Prosa</td></tr>
+        <tr><th>Posição social</th><td>Gosto oficial da elite, prestígio, Academia</td><td>Marginal, minoritário, feito fora do eixo</td><td>Crítico, jornalístico, incômodo</td></tr>
+        <tr><th>Autores</th><td>Olavo Bilac, Alberto de Oliveira, Raimundo Correia</td><td>Cruz e Sousa, Alphonsus de Guimaraens</td><td>Euclides da Cunha, Lima Barreto, Monteiro Lobato, Augusto dos Anjos, Graça Aranha</td></tr>
+        <tr><th>Obra-símbolo</th><td>"Profissão de fé"</td><td>"Antífona"</td><td><i>Os sertões</i></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box key">
+    <h5>Três detalhes de tabela que viram questão sozinhos</h5>
+    <ul class="plain">
+      <li>Parnasianismo e Simbolismo são <b>poesia</b>; Pré-modernismo é sobretudo <b>prosa</b>. Só Augusto dos Anjos faz verso no terceiro.</li>
+      <li>Os três terminam em <b>1922</b>, na mesma data, porque a Semana de Arte Moderna encerra o ciclo inteiro.</li>
+      <li>Parnasianismo era <b>bem visto</b> pela elite; Simbolismo era <b>marginal</b>. Isso costuma virar pergunta sobre "recepção da obra na época".</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= EXERCÍCIOS ================= -->
+<section class="rev">
+  <h2>Exercícios</h2>
+  <p class="lead">No formato que cai: um trecho sem etiqueta, e o senhor identifica a escola e justifica. Pense antes de abrir. A resposta traz a justificativa completa, do jeito que vale ponto na correção.</p>
+
+  <div class="ex">
+    <div class="num">Questão 1</div>
+    <div class="head">
+      <div class="frag">Esta, de áureos relevos, trabalhada
+De divas mãos, brilhante copa, um dia,
+Já de aos deuses servir como cansada,
+Vinda do Olimpo, a um novo deus servia.</div>
+    </div>
+    <div class="ask">A que escola pertence este trecho? Aponte três elementos que sustentam a resposta.</div>
+    <details><div class="ans">
+      <p><b>Parnasianismo.</b> É de "Vaso grego", de Alberto de Oliveira.</p>
+      <p><b>1. Descritivismo, a poesia-escultura:</b> o assunto do poema é um objeto, uma taça trabalhada. Dá para desenhar a cena inteira, o que é a assinatura parnasiana.</p>
+      <p><b>2. Tema clássico greco-latino:</b> "Olimpo", "deuses", "divas mãos". A escola busca a Antiguidade como padrão de beleza.</p>
+      <p><b>3. Vocabulário culto e forma rigorosa:</b> "áureos relevos" em vez de "enfeites dourados", versos decassílabos com rima organizada, sintaxe invertida trabalhada. Nada de "eu" no poema, impessoalidade completa.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 2</div>
+    <div class="head">
+      <div class="frag">Ó Formas alvas, brancas, Formas claras
+De luares, de neves, de neblinas!...</div>
+    </div>
+    <div class="ask">Identifique a escola e explique por que um poeta da escola rival jamais escreveria estes versos.</div>
+    <details><div class="ans">
+      <p><b>Simbolismo</b>, de "Antífona", de Cruz e Sousa.</p>
+      <p><b>Por que é simbolista:</b> acúmulo de três sinônimos de branco criando musicalidade em vez de informação; substantivos brancos e sem contorno (luar, neve, neblina); "Formas" com maiúscula alegorizante, transformando a palavra em entidade; reticências deixando a ideia em suspensão.</p>
+      <p><b>Por que um parnasiano não escreveria:</b> porque o parnasiano preza a <b>precisão</b> e cortaria dois dos três adjetivos por redundância. Ele descreveria um objeto de contorno firme, não uma névoa. Onde o parnasiano quer que o leitor <b>veja</b>, o simbolista quer que o leitor <b>sinta e ouça</b>.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 3</div>
+    <div class="head">
+      <div class="frag">O sertanejo é, antes de tudo, um forte. Não tem o raquitismo exaustivo dos mestiços neurastênicos do litoral.</div>
+    </div>
+    <div class="ask">Qual é a obra, o autor e o período? Explique a contradição interna que este trecho revela.</div>
+    <details><div class="ans">
+      <p><b><i>Os sertões</i> (1902), de Euclides da Cunha. Pré-modernismo.</b></p>
+      <p><b>A contradição:</b> a frase elogia o sertanejo e ao mesmo tempo usa o vocabulário racista e determinista que estava em moda ("mestiços neurastênicos", "raquitismo"). Euclides foi a Canudos acreditando nas teorias que julgavam a mistura de raças degenerativa, mas o que viu no sertão desmentiu a teoria dele. O resultado é um livro que <b>defende o sertanejo com as palavras da ciência que o condenava</b>.</p>
+      <p><b>Por que é pré-modernista:</b> denúncia da realidade brasileira, personagem marginalizado no centro, regionalismo (o sertão da Bahia), nacionalismo crítico e sincretismo de linguagem (científica e literária ao mesmo tempo). Lembre que Pré-modernismo <b>não é escola</b>, é período de transição.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 4</div>
+    <div class="head">
+      <div class="frag">Também dos corações onde abotoam,
+Os sonhos, um por um, céleres voam,
+Como voam as pombas dos pombais;</div>
+    </div>
+    <div class="ask">O tom é melancólico. Isso basta para classificar como Simbolismo? Justifique.</div>
+    <details><div class="ans">
+      <p><b>Não basta. É Parnasianismo</b>, de "As pombas", de Raimundo Correia.</p>
+      <p><b>Por quê:</b> melancolia é <b>tema</b>, e tema não define escola. O que define é o tratamento. Aqui a comparação é <b>explicada às claras</b>, com a palavra "como" ligando os dois planos: sonhos que voam assim como pombas voam. Isso é raciocínio organizado, com conclusão fechada.</p>
+      <p><b>O simbolista faria diferente:</b> não explicaria a imagem, deixaria o símbolo sugerido, sem o "como". E buscaria som e vagueza, não clareza. Repare ainda que a cena das pombas é <b>visualmente nítida</b>, dá para desenhar, o que é marca parnasiana.</p>
+      <p><b>Cuidado permanente:</b> Raimundo Correia é o parnasiano melancólico, e é justamente por isso que ele aparece nas pegadinhas.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 5</div>
+    <div class="head">
+      <div class="frag">Já o verme — este operário das ruínas —
+Que o sangue podre das carnificinas
+Come, e à vida em geral declara guerra,</div>
+    </div>
+    <div class="ask">Quem escreveu, e por que este autor é classificado no Pré-modernismo mesmo escrevendo sonetos de forma parnasiana?</div>
+    <details><div class="ans">
+      <p><b>Augusto dos Anjos</b>, em "Psicologia de um vencido", do livro <i>Eu</i> (1912).</p>
+      <p><b>Por que Pré-modernismo:</b> primeiro pela data, ele está dentro do período de 1902 a 1922. Segundo, e mais importante, porque ele <b>rompe o decoro</b> da literatura de salão: traz para dentro do soneto o verme, o sangue podre, a carne em decomposição e o vocabulário científico (carbono, amoníaco, inorgânico). Nenhum parnasiano aceitaria assunto tão feio, e nenhum simbolista aceitaria matéria tão concreta.</p>
+      <p><b>Sobre a forma parnasiana:</b> ela existe mesmo, e é proposital. O choque do poema vem justamente do contraste entre a <b>embalagem clássica</b> e o <b>conteúdo repugnante</b>. Por isso Augusto dos Anjos é descrito como autor de <b>síntese</b>, que mistura parnasianismo, simbolismo e cientificismo naturalista sem pertencer a nenhum.</p>
+      <p><b>Detalhe do trecho:</b> chamar o verme de "operário" é vocabulário de industrialização aplicado à morte. A morte deixa de ser mistério e vira <b>processo de trabalho</b>.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 6</div>
+    <div class="head">
+      <div class="frag">Ah! plangentes violões dormentes, mornos,
+Soluços ao luar, choros ao vento...</div>
+    </div>
+    <div class="ask">Nomeie duas figuras de linguagem presentes e relacione cada uma a uma característica da escola.</div>
+    <details><div class="ans">
+      <p><b>Simbolismo</b>, "Violões que choram", de Cruz e Sousa.</p>
+      <p><b>1. Aliteração:</b> repetição das consoantes líquidas e nasais em "plangentes violões dormentes, mornos". O verso <b>imita o som do violão</b>. Corresponde à característica da <b>musicalidade</b>, a mais importante da escola, herdada do "a música antes de tudo" de Verlaine.</p>
+      <p><b>2. Sinestesia:</b> em "soluços ao luar", cruzam-se dois sentidos, a audição (soluço) e a visão (luar). Corresponde à característica da <b>sinestesia</b>, que nasce da ideia baudelairiana de que os sentidos se correspondem e de que o mundo visível é casca de um mundo invisível.</p>
+      <p><b>Reforço:</b> "luar" também marca a obsessão pelo <b>branco e pelo vago</b>, e as reticências marcam a <b>sugestão</b> em vez da afirmação.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 7</div>
+    <div class="head">
+      <div class="frag">Torce, aprimora, alteia, lima
+A frase; e, enfim,
+No verso de ouro engasta a rima,
+Como um rubim.</div>
+    </div>
+    <div class="ask">Explique como este trecho funciona como manifesto da escola a que pertence, e contra quem ele está sendo escrito.</div>
+    <details><div class="ans">
+      <p><b>Parnasianismo.</b> É "Profissão de fé", de Olavo Bilac, poema de abertura de <i>Poesias</i> (1888).</p>
+      <p><b>Como funciona como manifesto:</b> os quatro verbos iniciais são todos de <b>trabalho manual</b> (torcer, aprimorar, alteiar, limar). Não há um único verbo de emoção. O poema declara que fazer poesia é <b>ofício de artesão</b>, não descarga de sentimento. Isso é o "culto à forma" e o "racionalismo" da escola ditos em voz alta.</p>
+      <p><b>A metáfora central:</b> o vocabulário é o de <b>joalheria</b>. "Engastar" é encaixar a pedra no anel; a rima é tratada como rubi encaixado num verso de ouro. Poesia como joia, ou seja, objeto precioso feito para ser belo e para nada mais. É a definição de <b>arte pela arte</b>.</p>
+      <p><b>Contra quem:</b> contra o <b>Romantismo</b>. Contra o poeta que escrevia no impulso, sem acabamento, chorando a própria dor no papel. Bilac responde: emoção não é poesia, trabalho é poesia.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 8</div>
+    <div class="head">
+      <div class="frag">As asas que Deus lhe deu
+Ruflaram de par em par...
+Sua alma subiu ao céu,
+Seu corpo desceu ao mar.</div>
+    </div>
+    <div class="ask">Identifique escola, autor e obra. Explique qual característica da escola está sendo exemplificada pelo desfecho.</div>
+    <details><div class="ans">
+      <p><b>Simbolismo. "Ismália", de Alphonsus de Guimaraens, no livro <i>Dona Mística</i> (1899).</b></p>
+      <p><b>Característica exemplificada, o dualismo entre matéria e espírito:</b> a alma sobe, o corpo desce. O ser humano é partido em dois, puxado para cima pelo espírito e para baixo pela matéria. Essa cisão é o núcleo temático do Simbolismo, e aparece também em Cruz e Sousa, na imagem da alma presa no cárcere do corpo.</p>
+      <p><b>Segunda característica, a sugestão:</b> o poema narra um suicídio <b>sem jamais dizer a palavra</b>. Nada é afirmado, tudo é insinuado por imagem. É o oposto exato do descritivismo parnasiano.</p>
+      <p><b>Terceira, a musicalidade:</b> as mesmas duas rimas (eu / ar) atravessam as cinco estrofes inteiras, criando efeito de cantiga e de hipnose. O poema soa como uma canção de ninar sobre a morte.</p>
+      <p><b>Detalhe fino que impressiona na correção:</b> é a única estrofe do poema que termina em <b>ponto final</b>, sem reticências. A suspensão acaba quando a divisão entre alma e corpo finalmente se cumpre.</p>
+    </div></details>
+  </div>
+
+<style>
+.mc{padding:0 24px 18px}
+.mc ol{list-style:upper-alpha;padding-left:28px;margin:14px 0 0;font-family:var(--sans);font-size:16px}
+.mc ol li{margin-bottom:11px;line-height:1.55;color:#ddd6c8;padding-left:4px}
+.wrongs{margin-top:18px;border-top:1px dashed var(--line);padding-top:16px}
+.wrongs .w{margin-bottom:13px;line-height:1.7}
+.wrongs .w:last-child{margin-bottom:0}
+.wrongs .w b{color:#fff}
+.gab{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#0c0b0f;background:var(--ok);padding:4px 12px;border-radius:999px;font-weight:700;margin-bottom:14px}
+.twin{display:grid;gap:14px;margin:0 0 14px}
+.twin .t{border-left:2px solid var(--line);padding-left:16px}
+.twin .tl2{font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;font-style:normal}
+.enredo{font-style:normal;border-left:2px solid var(--line);padding-left:16px;margin:0 0 14px;font-size:17.5px;line-height:1.7;color:#ddd6c8}
+</style>
+
+  <h3>Bloco 2: identificação de trecho</h3>
+
+  <div class="ex">
+    <div class="num">Questão 9</div>
+    <div class="head">
+      <div class="frag">Última flor do Lácio, inculta e bela,
+És, a um tempo, esplendor e sepultura:
+Ouro nativo, que na ganga impura
+A bruta mina entre os cascalhos vela...</div>
+    </div>
+    <div class="ask">Identifique a escola e justifique com três traços do texto. Explique também a metáfora central.</div>
+    <details><div class="ans">
+      <p><b>Parnasianismo.</b> É "Língua Portuguesa", de Olavo Bilac.</p>
+      <p><b>1. Vocabulário culto e preciso:</b> "ganga" é termo de mineração, o material sem valor que envolve o minério dentro da rocha. Não é palavra escolhida por som, é escolhida por <b>exatidão técnica</b>. Isso é preciosismo parnasiano.</p>
+      <p><b>2. Forma rigorosa:</b> soneto em decassílabos, rimas organizadas, sintaxe invertida trabalhada ("És, a um tempo"). A construção é visivelmente calculada.</p>
+      <p><b>3. Referência clássica:</b> "Lácio" é a região da Itália onde se falava o latim, berço de Roma. A língua portuguesa é apresentada como a última língua nascida do latim. Tema culto e universalizante, não assunto de Brasil real.</p>
+      <p><b>A metáfora central:</b> a língua é <b>ouro dentro da pedra bruta</b>. Bela e ao mesmo tempo "inculta", esplendor e sepultura do latim. E veja o detalhe que fecha a questão: Bilac escolheu comparar a língua a <b>metal precioso a ser lapidado</b>, exatamente a mesma metáfora de joalheria de "Profissão de fé". Para o parnasiano, língua e poema são matéria-prima que se trabalha com ferramenta.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 10 · confronto direto</div>
+    <div class="head">
+      <div class="twin">
+        <div class="t frag"><div class="tl2">Texto A</div>Estranho mimo aquele vaso! Vi-o,
+Casualmente, uma vez, de um perfumado
+Contador sobre o mármore luzidio,
+Entre um leque e o começo de um bordado.</div>
+        <div class="t frag"><div class="tl2">Texto B</div>Ó Formas vagas, fluidas, cristalinas...
+Incensos dos turíbulos das aras...</div>
+      </div>
+    </div>
+    <div class="ask">Os dois textos foram escritos no mesmo período histórico. Identifique a escola de cada um e explique por que duas estéticas opostas puderam nascer ao mesmo tempo.</div>
+    <details><div class="ans">
+      <p><b>Texto A: Parnasianismo</b> ("Vaso chinês", Alberto de Oliveira). <b>Texto B: Simbolismo</b> ("Antífona", Cruz e Sousa).</p>
+      <p><b>A diferença, em uma frase:</b> o texto A tem <b>contorno</b>, o texto B tem <b>névoa</b>. Em A o senhor consegue desenhar a cena inteira, com vaso, móvel, mármore, leque e bordado nos seus lugares. Em B não há nada para desenhar, só formas que se recusam a ter borda.</p>
+      <p><b>Prova por vocabulário:</b> A usa palavras que <b>delimitam</b> (contador, mármore, leque, bordado). B usa palavras que <b>dissolvem</b> (vagas, fluidas, cristalinas, incensos). São dois projetos de linguagem contrários.</p>
+      <p><b>Por que ao mesmo tempo:</b> porque os dois são <b>reações opostas ao mesmo problema</b>. O fim do século XIX foi dominado pelo positivismo e pelo cientificismo, a crença de que só vale o que se mede. O Parnasianismo <b>aceitou</b> esse clima e fez uma poesia objetiva, técnica e verificável, quase de laboratório. O Simbolismo <b>recusou</b> esse clima e foi buscar exatamente o que não se mede: alma, Deus, mistério, inconsciente.</p>
+      <p><b>Detalhe que vale ponto extra:</b> não é caso de um substituir o outro. Conviveram de 1893 a 1922, disputando espaço, com o Parnasianismo ocupando o lugar de gosto oficial da elite e o Simbolismo ficando à margem.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 11</div>
+    <div class="head">
+      <div class="frag">A catedral ebúrnea do meu sonho
+Aparece, na paz do céu risonho,
+Toda branca de sol.
+
+E o sino canta em lúgubres responsos:
+"Pobre Alphonsus! Pobre Alphonsus!"</div>
+    </div>
+    <div class="ask">Identifique escola e autor. Aponte três características da escola presentes no trecho.</div>
+    <details><div class="ans">
+      <p><b>Simbolismo. Alphonsus de Guimaraens, "A Catedral".</b></p>
+      <p><b>1. Vocabulário místico e religioso:</b> catedral, sino, "responsos" (as respostas cantadas da liturgia, especialmente do ofício dos mortos). O cenário sagrado não é decoração, é o território do que não se explica pela razão.</p>
+      <p><b>2. Obsessão pelo branco:</b> "ebúrnea" significa <b>feita de marfim</b>, e o verso seguinte insiste, "toda branca de sol". O branco simbolista é sempre o branco luminoso e imaterial, não o branco duro do mármore parnasiano.</p>
+      <p><b>3. Musicalidade:</b> o sino "canta", e o poema tem refrão que retorna a cada estrofe. A repetição obsessiva de "Pobre Alphonsus!" funciona como badalada, o som conduzindo o poema mais do que o sentido.</p>
+      <p><b>Traço biográfico que costuma acompanhar a questão:</b> a catedral é a de Mariana, cidade onde o poeta viveu, e o luto do poema se liga à morte da noiva Constança, musa morta que atravessa a obra inteira dele.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 12</div>
+    <div class="head">
+      <div class="enredo">Um funcionário público apaixonado pelo Brasil propõe que o tupi seja adotado como língua oficial do país e vira motivo de chacota. Tenta depois provar a fertilidade da terra brasileira num pequeno sítio, e fracassa diante das formigas, da burocracia e do descaso das autoridades. Por fim, apoia o governo numa revolta armada e acaba preso e condenado à morte pelo mesmo governo que defendeu.</div>
+    </div>
+    <div class="ask">Identifique obra, autor e período. Qual característica do período está sendo exemplificada por esse enredo?</div>
+    <details><div class="ans">
+      <p><b><i>Triste fim de Policarpo Quaresma</i> (1911), de Lima Barreto. Pré-modernismo.</b></p>
+      <p><b>A característica exemplificada é o nacionalismo crítico</b>, que é o oposto do <b>ufanismo</b>. Ufanismo é o patriotismo de discurso oficial, aquele que diz que esta é a terra mais bela e mais rica do mundo. O romance pega um personagem que <b>acredita nesse discurso ao pé da letra</b> e mostra o país destruindo, uma por uma, todas as ilusões dele. O patriota morre pelas mãos da pátria que amava.</p>
+      <p><b>Outras características do período no mesmo enredo:</b> denúncia da realidade brasileira (a burocracia inútil, o descaso oficial, a violência do Estado na República Velha) e o <b>personagem marginalizado no centro</b>, um funcionário público pobre e ridicularizado, longe do herói idealizado.</p>
+      <p><b>Sobre o autor, detalhe que cai junto:</b> Lima Barreto era negro, pobre e morador do subúrbio carioca, e escrevia de propósito em <b>linguagem simples</b>, quase de crônica de jornal, em oposição declarada ao rebuscamento dos escritores de prestígio da época, sobretudo Coelho Neto.</p>
+    </div></details>
+  </div>
+
+  <h3>Bloco 3: as armadilhas clássicas</h3>
+
+  <div class="ex">
+    <div class="num">Questão 13 · armadilha</div>
+    <div class="head">
+      <div class="frag">Cheguei. Chegaste. Vinhas fatigada
+E triste, e triste e fatigado eu vinha.
+Tinhas a alma de sonhos povoada,
+E a alma de sonhos povoada eu tinha...</div>
+    </div>
+    <div class="ask">O tema é o encontro amoroso. Um colega classificou como Romantismo. Ele está certo? Justifique pela construção do texto.</div>
+    <details><div class="ans">
+      <p><b>Não está certo. É Parnasianismo</b>, o soneto "Nel mezzo del camin", de Olavo Bilac.</p>
+      <p><b>Por que não é Romantismo:</b> repare no que a estrofe faz. Cada verso <b>repete a informação do anterior com a ordem invertida</b>: "vinhas fatigada e triste" vira "triste e fatigado eu vinha"; "tinhas a alma de sonhos povoada" vira "a alma de sonhos povoada eu tinha". Isso é uma figura de construção chamada <b>quiasmo</b>, um cruzamento em espelho.</p>
+      <p><b>E o que isso prova:</b> ninguém escreve em espelho por impulso emocional. O efeito de simetria perfeita entre os dois amantes é <b>fabricado com precisão de relojoeiro</b>. O romântico despeja o sentimento; Bilac o <b>arquiteta</b>. A emoção existe, mas está sob controle técnico absoluto, que é a definição da escola.</p>
+      <p><b>A regra a levar para a prova:</b> tema não classifica texto. Amor aparece no Romantismo, no Parnasianismo e no Simbolismo. O que classifica é o <b>tratamento</b>: forma rigorosa e imagem nítida entregam Parnasianismo.</p>
+      <p><b>Curiosidade que às vezes vira pergunta:</b> o título é o verso de abertura da <i>Divina Comédia</i>, de Dante ("no meio do caminho"), sinal do repertório clássico que a escola gostava de exibir.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 14 · armadilha</div>
+    <div class="head">
+      <div class="frag">Quanta gente que ri, talvez, consigo
+Guarda um atroz, recôndito inimigo,
+Como invisível chaga cancerosa!</div>
+    </div>
+    <div class="ask">O assunto é a dor escondida da alma. Isso indica Simbolismo? Identifique corretamente a escola e o autor, e explique a diferença de tratamento.</div>
+    <details><div class="ans">
+      <p><b>Não indica. É Parnasianismo</b>, o soneto "Mal secreto", de Raimundo Correia.</p>
+      <p><b>O que engana:</b> o tema é interior, psicológico e sombrio, terreno que parece simbolista. Raimundo Correia é justamente o parnasiano melancólico, e por isso é a fonte preferida de pegadinha.</p>
+      <p><b>Por que o tratamento é parnasiano:</b> o soneto inteiro é um <b>raciocínio armado em etapas</b>. Começa com uma hipótese ("se a dor no rosto se estampasse"), desenvolve a consequência e fecha com uma sentença conclusiva. Tudo é dito às claras, com comparação explicada pela palavra "como", em forma métrica impecável.</p>
+      <p><b>O que um simbolista faria com o mesmo assunto:</b> não construiria hipótese nem conclusão. Criaria um clima de névoa, som e sugestão, deixando a dor pairando sem explicação, provavelmente com maiúscula alegorizante (a Dor) e reticências. Compare com "Cárcere das almas", de Cruz e Sousa: lá a alma presa não é <b>argumentada</b>, é <b>invocada</b>.</p>
+      <p><b>Resuma assim:</b> parnasiano <b>conclui</b>, simbolista <b>dissolve</b>.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 15 · armadilha</div>
+    <div class="head">
+      <div class="enredo">Um autor retrata o caboclo do interior paulista como um sujeito acocorado, parasita da terra, incapaz de progresso. Anos depois, diante das campanhas sanitaristas, o mesmo autor revê a própria tese e passa a afirmar que aquele homem não era preguiçoso: estava doente, com verminose, e abandonado pelo poder público.</div>
+    </div>
+    <div class="ask">Quem é o autor, qual o personagem e qual a obra? Explique por que essa mudança de posição é matéria de prova, e cite o episódio que faz dele um adversário do Modernismo.</div>
+    <details><div class="ans">
+      <p><b>Monteiro Lobato</b>, o personagem é o <b>Jeca Tatu</b> e a obra é <i>Urupês</i> (1918). Pré-modernismo. "Urupê", aliás, é um cogumelo que cresce em tronco podre, e o título já carrega o julgamento inicial do autor sobre o caboclo.</p>
+      <p><b>Por que a mudança de posição cai em prova:</b> porque ela mostra o <b>mecanismo central do período</b>. O autor parte do preconceito corrente da elite (o povo é atrasado por natureza) e, ao olhar de perto o Brasil real, descobre que o problema é <b>social e sanitário</b>, não moral. É exatamente o mesmo movimento de Euclides da Cunha, que foi a Canudos com teorias raciais na cabeça e voltou escrevendo que "o sertanejo é, antes de tudo, um forte". Os dois casos são a característica da <b>denúncia da realidade brasileira</b> vencendo a teoria importada.</p>
+      <p><b>O episódio contra o Modernismo:</b> em 1917, Lobato publicou o artigo <b>"Paranoia ou mistificação?"</b>, atacando duramente a exposição da pintora <b>Anita Malfatti</b>, que era defendida pelo grupo que faria a Semana de 1922. Ou seja, ele é pré-modernista e ao mesmo tempo <b>inimigo declarado do Modernismo</b>. Essa contradição é pergunta frequente.</p>
+    </div></details>
+  </div>
+
+  <h3>Bloco 4: múltipla escolha, no formato de vestibular</h3>
+  <p>Aqui o valor está no comentário das alternativas erradas. Leia todos, inclusive os das que o senhor já sabia que estavam erradas: é ali que a banca esconde a matéria.</p>
+
+  <div class="ex">
+    <div class="num">Questão 16 · múltipla escolha</div>
+    <div class="ask" style="padding-bottom:0">Sobre o Parnasianismo brasileiro, assinale a alternativa correta.</div>
+    <div class="mc">
+      <ol>
+        <li>Buscava a musicalidade do verso para sugerir estados de alma, sob influência de Verlaine.</li>
+        <li>Defendia a arte pela arte e o rigor formal, tomando o soneto como forma privilegiada.</li>
+        <li>Colocava o sertanejo e o subúrbio no centro da obra, denunciando o abandono do interior.</li>
+        <li>Rompeu com a métrica tradicional, adotando o verso livre e a linguagem coloquial.</li>
+        <li>Retomou o sentimentalismo e a idealização amorosa herdados do Romantismo.</li>
+      </ol>
+    </div>
+    <details><div class="ans">
+      <div class="gab">Gabarito: B</div>
+      <p><b>Por que B está certa:</b> "arte pela arte" (o poema não serve a nenhuma causa fora de si) e culto à forma são as duas colunas da escola. O soneto é a forma preferida justamente por ser a mais exigente tecnicamente.</p>
+      <div class="wrongs">
+        <div class="w"><b>A está errada porque</b> musicalidade e sugestão são do <b>Simbolismo</b>, e Verlaine é referência dos simbolistas, autor da frase "a música antes de tudo". Além disso, o parnasiano não quer sugerir estado de alma: quer descrever objeto com contorno nítido.</div>
+        <div class="w"><b>C está errada porque</b> descreve o <b>Pré-modernismo</b> (Euclides da Cunha, Lima Barreto, Monteiro Lobato). O Parnasianismo evitava o Brasil real e preferia mitologia grega, Roma e objetos de arte.</div>
+        <div class="w"><b>D está errada porque</b> verso livre e coloquialismo são do <b>Modernismo</b>, a partir de 1922. O parnasiano é o extremo oposto: conta sílaba por sílaba e usa vocabulário culto.</div>
+        <div class="w"><b>E está errada porque</b> inverte a escola. O Parnasianismo nasceu <b>contra</b> o sentimentalismo romântico. Se o senhor marcar essa, está trocando a escola pelo inimigo dela.</div>
+      </div>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 17 · múltipla escolha</div>
+    <div class="ask" style="padding-bottom:0">O Pré-modernismo aparece nos manuais ao lado das escolas literárias. Assinale a alternativa que descreve corretamente o seu estatuto.</div>
+    <div class="mc">
+      <ol>
+        <li>É escola literária com manifesto próprio, publicado em 1902 por Euclides da Cunha.</li>
+        <li>É a fase inicial do Modernismo, iniciada com a Semana de Arte Moderna de 1922.</li>
+        <li>Não é escola literária, mas um período de transição, de 1902 a 1922, nomeado depois pela crítica, sem manifesto nem programa comum entre os autores.</li>
+        <li>É o nome dado ao Simbolismo tardio, praticado fora do eixo Rio e São Paulo.</li>
+        <li>É corrente europeia trazida ao Brasil por Graça Aranha depois de 1922.</li>
+      </ol>
+    </div>
+    <details><div class="ans">
+      <div class="gab">Gabarito: C</div>
+      <p><b>Por que C está certa:</b> o rótulo foi criado pelo crítico <b>Tristão de Athayde</b> (pseudônimo de Alceu Amoroso Lima) para nomear o intervalo entre as escolas do século XIX e o Modernismo. Não houve grupo, revista, manifesto ou programa. Os autores tinham em comum a época e o incômodo com o país, não uma estética combinada.</p>
+      <div class="wrongs">
+        <div class="w"><b>A está errada porque</b> não existiu manifesto. <i>Os sertões</i> é livro-reportagem e ensaio sobre a Guerra de Canudos, não programa estético. Euclides não fundou movimento nenhum.</div>
+        <div class="w"><b>B está errada porque</b> o prefixo "pré" indica <b>anterioridade</b>, não fase inicial. O período vai até 1922 e <b>termina</b> exatamente quando o Modernismo começa.</div>
+        <div class="w"><b>D está errada porque</b> o Simbolismo é escola própria, com manifesto francês de 1886 e marco brasileiro em 1893. É verdade que foi minoritário e forte fora do eixo, mas isso não o transforma em Pré-modernismo. São coisas distintas que apenas conviveram no tempo.</div>
+        <div class="w"><b>E está errada porque</b> o fenômeno é brasileiro e anterior a 1922. Graça Aranha é autor do período (<i>Canaã</i>, 1902) e depois <b>participou</b> da Semana de Arte Moderna, o que é o contrário do que a alternativa afirma.</div>
+      </div>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 18 · múltipla escolha</div>
+    <div class="head">
+      <div class="frag">Quando Ismália enlouqueceu,
+Pôs-se na torre a sonhar...
+Viu uma lua no céu,
+Viu outra lua no mar.</div>
+    </div>
+    <div class="ask" style="padding-bottom:0">Todas as afirmações sobre o trecho estão corretas, EXCETO:</div>
+    <div class="mc">
+      <ol>
+        <li>A repetição das mesmas rimas ao longo do poema cria efeito musical, próximo da cantiga.</li>
+        <li>A duplicação da lua funciona como símbolo da cisão entre o plano espiritual e o material.</li>
+        <li>O poema descreve a cena com vocabulário raro e precisão de contorno, marcas do ideal parnasiano.</li>
+        <li>As reticências deixam a ideia em suspensão, recurso ligado à estética da sugestão.</li>
+        <li>A loucura e o sonho funcionam como porta de entrada para o irracional, terreno caro ao Simbolismo.</li>
+      </ol>
+    </div>
+    <details><div class="ans">
+      <div class="gab">Gabarito: C (é a exceção)</div>
+      <p><b>Por que C é a falsa:</b> por duas razões independentes, e qualquer uma já derruba a alternativa. Primeira, <b>não há vocabulário raro</b> no poema: lua, céu, mar, torre, sonhar são palavras do dia a dia, o oposto do preciosismo parnasiano. Segunda, o poema <b>não descreve, sugere</b>. A cena existe, mas serve como símbolo de outra coisa, e nunca é explicada. O ideal parnasiano exigiria descrição precisa e forma a serviço do objeto; aqui a forma está a serviço do som.</p>
+      <div class="wrongs">
+        <div class="w"><b>A é verdadeira:</b> as mesmas duas rimas (eu / ar) atravessam as cinco estrofes inteiras, o que produz efeito de ninar e de repetição hipnótica. Musicalidade é a característica número um da escola.</div>
+        <div class="w"><b>B é verdadeira:</b> a lua do mar é reflexo, não é lua. Duas luas, dois planos, e a moça dividida entre subir e descer. É o dualismo entre matéria e espírito posto em imagem, e é daí que vem o nome "Simbolismo".</div>
+        <div class="w"><b>D é verdadeira:</b> as reticências aparecem em quase todo verso e impedem que a ideia se feche. Sugerir em vez de afirmar é o método declarado da escola.</div>
+        <div class="w"><b>E é verdadeira:</b> o Simbolismo reage ao cientificismo positivista buscando justamente o que a razão não alcança, e loucura, sonho e delírio são as portas preferidas para esse território.</div>
+      </div>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 19 · múltipla escolha</div>
+    <div class="ask" style="padding-bottom:0">Sobre a relação cronológica entre Parnasianismo, Simbolismo e Pré-modernismo no Brasil, assinale a alternativa correta.</div>
+    <div class="mc">
+      <ol>
+        <li>Sucedem-se em blocos fechados: o Parnasianismo termina em 1893, quando começa o Simbolismo, que termina em 1902, quando começa o Pré-modernismo.</li>
+        <li>Parnasianismo e Simbolismo conviveram por cerca de trinta anos como tendências opostas, e o Pré-modernismo se desenvolveu sobre os dois, até que a Semana de 1922 encerrou o ciclo.</li>
+        <li>O Simbolismo antecede o Parnasianismo, do qual é a reação direta.</li>
+        <li>O Pré-modernismo é anterior ao Simbolismo, pois <i>Os sertões</i> é de 1902 e <i>Broquéis</i>, de 1905.</li>
+        <li>As três tendências só se encerram com a Segunda Guerra Mundial.</li>
+      </ol>
+    </div>
+    <details><div class="ans">
+      <div class="gab">Gabarito: B</div>
+      <p><b>Por que B está certa:</b> as datas de início (1882, 1893, 1902) são datas de <b>entrada</b>, não de saída. As três tendências se sobrepõem e todas se encerram em <b>1922</b>, com a Semana de Arte Moderna.</p>
+      <div class="wrongs">
+        <div class="w"><b>A está errada porque</b> é o erro mais comum na leitura de manual: tratar a data de início de uma escola como data de morte da anterior. Bilac publicou até o fim da vida, morreu em 1918, com o Simbolismo em plena atividade e <i>Os sertões</i> já publicado havia dezesseis anos.</div>
+        <div class="w"><b>C está errada porque</b> inverte a ordem. O Parnasianismo é de 1882 e o Simbolismo, de 1893. A parte sobre "reação direta" até faz sentido, mas na direção contrária: é o Simbolismo que reage contra o Parnasianismo, e não o inverso.</div>
+        <div class="w"><b>D está errada porque</b> erra a data. <i>Broquéis</i> é de <b>1893</b>, junto de <i>Missal</i>. O ano de 1905 é o de <i>Últimos sonetos</i>, publicação póstuma. O Simbolismo antecede o Pré-modernismo em nove anos.</div>
+        <div class="w"><b>E está errada porque</b> o marco final é 1922. A Segunda Guerra (1939 a 1945) já pertence à segunda fase do Modernismo brasileiro, a do romance de 30 e da poesia de Drummond.</div>
+      </div>
+    </div></details>
+  </div>
+
+  <h3>Bloco 5: síntese e comparação</h3>
+
+  <div class="ex">
+    <div class="num">Questão 20</div>
+    <div class="ask">Explique a estrutura de <i>Os sertões</i> e diga por que essa divisão em três partes revela o método do autor.</div>
+    <details><div class="ans">
+      <p><b>As três partes são: A Terra, O Homem e A Luta.</b> Nessa ordem, e a ordem é o argumento.</p>
+      <p><b>A Terra:</b> geografia, geologia, clima e vegetação da caatinga. Euclides da Cunha era <b>engenheiro</b> e começa pelo solo, como quem faz laudo técnico.</p>
+      <p><b>O Homem:</b> a formação do sertanejo, seus costumes, sua religiosidade e a figura de Antônio Conselheiro.</p>
+      <p><b>A Luta:</b> a narrativa das quatro expedições militares contra Canudos, no sertão da Bahia, e o massacre final.</p>
+      <p><b>Por que essa ordem revela o método:</b> ela segue a lógica determinista em voga na época, segundo a qual o <b>meio</b> explica o <b>homem</b>, e o homem explica os <b>fatos</b>. Euclides parte da ciência do século XIX para provar uma tese.</p>
+      <p><b>E aqui está o ponto que dá nota:</b> a realidade desmontou a tese dele no meio do caminho. Ele foi a Canudos esperando encontrar degenerados e encontrou gente que resistiu a quatro expedições do Exército. Daí a frase "O sertanejo é, antes de tudo, um forte" e o registro seco de que <b>Canudos não se rendeu</b>. O livro acaba sendo uma <b>denúncia do massacre</b> escrita com o vocabulário da ciência que justificava o massacre. Essa contradição interna é a marca do Pré-modernismo: o Brasil real furando a teoria importada.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 21</div>
+    <div class="ask">Em <i>Canaã</i> (1902), de Graça Aranha, dois imigrantes alemães discutem o futuro do Brasil. Quem são, o que defende cada um, e por que esse autor é chamado de ponte entre dois períodos?</div>
+    <details><div class="ans">
+      <p><b>Os personagens são Milkau e Lentz</b>, imigrantes alemães instalados no Espírito Santo.</p>
+      <p><b>Milkau</b> acredita na <b>mistura de povos</b> e na fraternidade: o Brasil seria uma terra nova onde as raças se fundiriam em algo melhor. <b>Lentz</b> defende a <b>superioridade da raça germânica</b> e vê o país como terreno a ser dominado por ela.</p>
+      <p><b>O que o romance realmente é:</b> menos uma história e mais um <b>debate de ideias sobre que país o Brasil vai ser</b>. O título vem da <b>Canaã bíblica</b>, a terra prometida, e a pergunta do livro é se o Brasil é mesmo essa terra ou uma promessa que não se cumpre.</p>
+      <p><b>Por que é a ponte entre dois períodos:</b> porque Graça Aranha atravessou a fronteira pessoalmente. Era membro da Academia Brasileira de Letras, publicou em 1902 um dos dois livros que abrem o Pré-modernismo, e vinte anos depois <b>participou da Semana de Arte Moderna de 1922</b>, com a conferência "A emoção estética na arte moderna", rompendo em seguida com a própria Academia. Nenhum outro autor do período fez essa travessia.</p>
+      <p><b>Guarde a dupla:</b> 1902 é o ano de <i>Canaã</i> e de <i>Os sertões</i>. Os dois juntos marcam o início do período.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 22 · confronto</div>
+    <div class="head">
+      <div class="twin">
+        <div class="t frag"><div class="tl2">Texto A</div>Oh! que saudades que eu tenho
+Da aurora da minha vida,
+Da minha infância querida
+Que os anos não trazem mais!</div>
+        <div class="t frag"><div class="tl2">Texto B</div>Ah! Toda a alma num cárcere anda presa,
+Soluçando nas trevas, entre as grades
+Do calabouço olhando imensidades,
+Mares, estrelas, tardes, natureza.</div>
+      </div>
+    </div>
+    <div class="ask">Os dois textos são subjetivos e dolorosos. Identifique a escola de cada um e explique a diferença entre as duas dores.</div>
+    <details><div class="ans">
+      <p><b>Texto A: Romantismo</b> ("Meus oito anos", de Casimiro de Abreu). <b>Texto B: Simbolismo</b> ("Cárcere das almas", de Cruz e Sousa).</p>
+      <p><b>A diferença central está no dono da dor.</b> Em A, a dor é <b>pessoal e tem endereço</b>: é a saudade que <b>eu</b> tenho da <b>minha</b> infância. Os possessivos se repetem, e o sofrimento pertence a uma biografia. Em B, a dor é da <b>condição humana</b>: o poeta escreve "<b>toda</b> a alma", não "minha alma". Não é o caso dele, é o caso de todo mundo que nasceu.</p>
+      <p><b>Segunda diferença, a natureza do que se perdeu.</b> O romântico chora algo <b>concreto e datado</b> (a infância, um tempo que passou). O simbolista sofre por algo <b>metafísico e permanente</b> (a alma aprisionada na matéria, o dualismo entre corpo e espírito, que não tem cura nem data).</p>
+      <p><b>Terceira diferença, o modo de dizer.</b> O romântico <b>declara</b> o sentimento com clareza e exclamação. O simbolista constrói uma <b>imagem simbólica</b> (o cárcere, as grades, o calabouço) e deixa o resto por conta da sugestão. Repare ainda no acúmulo final de B, "mares, estrelas, tardes, natureza", quatro palavras sem conectivo formando ladainha, recurso musical que o Romantismo não usa.</p>
+      <p><b>A conclusão que vale ponto:</b> o Simbolismo <b>não é volta ao Romantismo</b>. Os dois são subjetivos, mas o romântico olha para dentro de si e o simbolista olha, através de si, para o mistério que está fora e acima de todos.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 23 · classificação rápida</div>
+    <div class="head">
+      <div class="twin">
+        <div class="t frag"><div class="tl2">Trecho I</div>No verso de ouro engasta a rima,
+Como um rubim.</div>
+        <div class="t frag"><div class="tl2">Trecho II</div>Sobe-me à boca uma ânsia análoga à ânsia
+Que se escapa da boca de um cardíaco.</div>
+        <div class="t frag"><div class="tl2">Trecho III</div>Tristes perfis, os mais vagos contornos,
+Bocas murmurejantes de lamento...</div>
+      </div>
+    </div>
+    <div class="ask">Classifique cada trecho e aponte, em uma frase, a marca que decidiu a sua resposta.</div>
+    <details><div class="ans">
+      <p><b>Trecho I: Parnasianismo</b> ("Profissão de fé", Olavo Bilac). A marca é a <b>metáfora de joalheria</b>: engastar é encaixar pedra em metal, e a rima é tratada como rubi. Poesia como objeto precioso fabricado.</p>
+      <p><b>Trecho II: Pré-modernismo</b> ("Psicologia de um vencido", Augusto dos Anjos). A marca é o <b>vocabulário clínico dentro do verso</b>: "cardíaco" e a imagem do corpo doente rompem o decoro da poesia de salão. Nenhuma das duas escolas anteriores aceitaria essa feiura.</p>
+      <p><b>Trecho III: Simbolismo</b> ("Violões que choram", Cruz e Sousa). A marca é o verso declarar o próprio método: <b>"os mais vagos contornos"</b>. Onde o parnasiano quer linha firme, o simbolista quer borrão, e "murmurejante" é palavra escolhida pelo som, não pela precisão.</p>
+      <p><b>O atalho para a prova:</b> I é joia, II é doença, III é névoa. Joia é Parnasianismo, doença e Brasil real é Pré-modernismo, névoa e som é Simbolismo.</p>
+    </div></details>
+  </div>
+
+  <div class="ex">
+    <div class="num">Questão 24 · síntese</div>
+    <div class="ask">Por que se diz que Parnasianismo, Simbolismo e Pré-modernismo terminam todos em 1922? O que essa data significa para cada um deles?</div>
+    <details><div class="ans">
+      <p><b>Porque 1922 é o ano da Semana de Arte Moderna</b>, realizada no Teatro Municipal de São Paulo, que inaugura o Modernismo brasileiro e torna obsoleto tudo o que vinha antes. A data é uma <b>fronteira comum</b>, não um fim natural de cada um.</p>
+      <p><b>Para o Parnasianismo</b>, 1922 é a derrota do <b>gosto oficial</b>. O Modernismo ataca justamente o que ele mais prezava: a métrica contada, a rima rica, o vocabulário culto e a ideia de poesia como objeto de luxo. O verso livre nasce como negação direta do soneto perfeito.</p>
+      <p><b>Para o Simbolismo</b>, 1922 é o fim de uma resistência que já era minoritária. Curiosamente, parte da herança simbolista <b>sobrevive dentro do Modernismo</b>, na liberdade de associação de imagens e no gosto pelo irracional e pelo sonho.</p>
+      <p><b>Para o Pré-modernismo</b>, 1922 é a <b>conclusão do trabalho</b>, não a derrota. Ele havia trazido o Brasil real para dentro da literatura, mas com forma antiga. O Modernismo aceita a herança do assunto e completa o serviço quebrando também a forma. Por isso o nome tem "pré": ele preparou o terreno.</p>
+      <p><b>Coincidência que costuma virar pergunta:</b> Lima Barreto morreu em 1922, no mesmo ano da Semana, sem participar dela.</p>
+    </div></details>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= COLINHA ================= -->
+<section class="rev">
+  <h2>Colinha de véspera</h2>
+  <p>Para ler dez minutos antes de entrar na sala.</p>
+
+  <div class="cheat">
+    <h4>O essencial em nove linhas</h4>
+    <ul>
+      <li><b>A cena:</b> a geração pós-romântica odiou o choro romântico. Uns responderam com técnica fria (Parnasianismo), outros com mistério e música (Simbolismo). Vinte anos depois, um terceiro grupo mandou os dois olharem para o Brasil real (Pré-modernismo).</li>
+      <li><b>Parnasianismo:</b> forma, mármore, vaso, ourives, soneto perfeito, arte pela arte, poeta invisível. Bilac, Alberto de Oliveira, Raimundo Correia.</li>
+      <li><b>Simbolismo:</b> som, branco, névoa, alma, incenso, maiúscula estranha, sugestão. Cruz e Sousa e Alphonsus de Guimaraens.</li>
+      <li><b>Pré-modernismo:</b> <b>não é escola</b>, é período (1902 a 1922) nomeado depois por Tristão de Athayde. Denúncia do Brasil real com forma ainda antiga. Euclides da Cunha, Lima Barreto, Monteiro Lobato, Augusto dos Anjos, Graça Aranha.</li>
+      <li><b>Os dois primeiros são contemporâneos e opostos</b>, não um depois do outro. Parnasianismo era o gosto oficial, Simbolismo era marginal.</li>
+      <li><b>Teste rápido:</b> dá para desenhar, é parnasiano. Só dá para ouvir e sentir, é simbolista. Fala de sertão, subúrbio e miséria, é pré-modernista.</li>
+      <li><b>Tema nunca define escola.</b> Amor e tristeza aparecem em todas. O que define é a forma e o tratamento.</li>
+      <li><b>Datas:</b> 1882 Fanfarras, 1893 Broquéis e Missal, 1902 Os sertões e Canaã, 1922 Semana de Arte Moderna encerra os três.</li>
+      <li><b>Gênero:</b> os dois primeiros são de poesia, o terceiro é de prosa, com exceção de Augusto dos Anjos.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Apostila de Literatura · Parnasianismo, Simbolismo e Pré-modernismo<br>
+    Preparada para a prova da semana de 14 a 20 de setembro de 2026<br>
+    Funciona sem internet. Basta abrir este arquivo.
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  var chip=document.getElementById('chip');
+  var ticking=false;
+
+  function onScroll(){
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(function(){
+      var h=document.documentElement;
+      var max=h.scrollHeight-h.clientHeight;
+      var pct=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+      bar.style.width=pct.toFixed(2)+'%';
+      if(pct>3){chip.classList.add('on');}else{chip.classList.remove('on');}
+      ticking=false;
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  // rotulo flutuante muda conforme a secao visivel
+  var labels=[
+    {sel:'.parn',txt:'Parnasianismo',col:'#d4af37'},
+    {sel:'.simb',txt:'Simbolismo',col:'#8fbfe0'},
+    {sel:'.prem',txt:'Pré-modernismo',col:'#d97a52'}
+  ];
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        labels.forEach(function(l){
+          if(e.target.matches(l.sel)){
+            chip.textContent=l.txt;
+            chip.style.color=l.col;
+            chip.style.borderColor=l.col+'66';
+          }
+        });
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+
+  document.querySelectorAll('.rev, #tl').forEach(function(el){io.observe(el);});
+
+  // fallback: se o navegador nao suportar, mostra tudo
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.rev').forEach(function(el){el.classList.add('in');});
+    document.getElementById('tl').classList.add('in');
+  }
+})();
+</script>
+
+</body>
+</html>
